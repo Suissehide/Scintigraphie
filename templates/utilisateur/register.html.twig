@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+    <div class="container-login">
+        <div class="wrap-login">
+
+            {{ form_start(form, {'attr': {'class': 'login-form validate-form', 'autocomplete' : 'off'} }) }}
+            {{ form_errors(form) }}
+
+                <span class="login-form-title">
+                    Inscription
+                </span>
+
+            <div class="wrap-input validate-input">
+                {{ form_widget(form.email, {'attr': {'autofocus' : true, 'class': 'input', 'autocomplete' : 'off'} }) }}
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="wrap-input validate-input">
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="wrap-input validate-input">
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="container-login-form-btn">
+                {{ form_widget(form.validation, {'attr': {'class': 'login-form-btn'} }) }}
+            </div>
+            
+            <div class="txt-register">
+                <a class="txt1" href="{{ url('login') }}">
+                    Connexion
+                </a>
+            </div>
+            
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest' : false}) }}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/trianglify.min.js') }}"></script>
+
+    <script>
+        var pattern = Trianglify({
+            height: window.innerHeight,
+            width: window.innerWidth,
+            x_colors: ['#2892d7', '#d63b53'],
+            y_colors: ['#1a535c', '#f4f9f7'],
+            // cell_size: Math.ceil(window.innerWidth / 8)
+        })
+        var svg = pattern.svg()
+        svg.id = 'trianglify-overlay'
+        document.body.appendChild(svg)
+    </script>
+{% endblock %}

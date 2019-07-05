@@ -30,7 +30,7 @@ td .btn-default {
 }
 
 .command-view {
-    background-color: #3CBDA5;
+    background-color: #55d6be;
 }
 
 .command-view:hover {
@@ -76,7 +76,7 @@ td .btn-default {
 }
 
 .table th:active, .table th:hover {
-    background: #3CBDA5;
+    background: #55d6be;
 }
 
 .table th span, .table th {
@@ -121,7 +121,7 @@ td .btn-default {
 }
 
 .pagination li:hover a {
-    color: #3CBDA5;
+    color: #55d6be;
 }
 
 .pagination li.active a {
@@ -133,7 +133,7 @@ td .btn-default {
 .pagination li.active:hover a {
     color: #f4f9f7;
     background-color: #55d6be;
-    border-color: #3CBDA5;
+    border-color: #55d6be;
 }
 
 .pagination li.last a, .pagination li.first a {
@@ -320,7 +320,7 @@ label {
 
 .eligible {
     margin-left: 15px;
-    border-left: 1px solid #3CBDA5;
+    border-left: 1px solid #55d6be;
     padding-left: 10px;
     display: flex;
 }
@@ -343,7 +343,7 @@ label {
 }
 
 .hero-tabs h1 span {
-    background-color: #3CBDA5;
+    background-color: #55d6be;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -379,7 +379,7 @@ label {
     width: 50px;
     height: 1px;
     margin: 10px 0 20px 0;
-    background-color: #3CBDA5;
+    background-color: #55d6be;
 }
 
 .hero-tabs-container {

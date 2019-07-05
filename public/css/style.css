@@ -16,6 +16,23 @@
 #1a535c
 */
 
+/*
+#501F3A
+#CB2D6F
+#CCCCCC
+#14A098
+#0F292F
+*/
+
+/*
+#E40C2B rouge
+#1D1D2C bleu sombre
+#F7F4E9 blanc
+#3CBCC3 bleu ciel
+#EBA63F jaune moutarde
+#438945 vert sombre
+*/
+
 /* ========= FONT ========= */
 
 @font-face {
@@ -652,11 +669,11 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
 }
 
 .btn-check {
-    background: #3CBDA5cc;
+    background: #55d6becc;
 }
 
 .btn-check:hover {
-    background: #3CBDA5;
+    background: #55d6be;
     color: white;
 }
 
@@ -785,7 +802,7 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
 }
 
 .tgl-skewed:checked+.tgl-btn {
-    background: #3CBDA5;
+    background: #55d6be;
 }
 
 .tgl-skewed:checked+.tgl-btn:before {

@@ -29,34 +29,29 @@ class Participant
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $code;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $numero;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", inversedBy="participants")
      */
     private $utilisateurs;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Verification", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $verification;
+    private $sexe;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Cardiovasculaire", cascade={"persist", "remove"})
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $cardiovasculaire;
+    private $dateNaissance;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Information", cascade={"persist", "remove"})
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $information;
+    private $age;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateJour;
 
     public function __construct()
     {
@@ -92,30 +87,6 @@ class Participant
         return $this;
     }
 
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(?string $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getNumero(): ?string
-    {
-        return $this->numero;
-    }
-
-    public function setNumero(?string $numero): self
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Utilisateur[]
      */
@@ -142,38 +113,50 @@ class Participant
         return $this;
     }
 
-    public function getVerification(): ?Verification
+    public function getSexe(): ?string
     {
-        return $this->verification;
+        return $this->sexe;
     }
 
-    public function setVerification(?Verification $verification): self
+    public function setSexe(?string $sexe): self
     {
-        $this->verification = $verification;
+        $this->sexe = $sexe;
 
         return $this;
     }
 
-    public function getCardiovasculaire(): ?Cardiovasculaire
+    public function getDateNaissance(): ?\DateTimeInterface
     {
-        return $this->cardiovasculaire;
+        return $this->dateNaissance;
     }
 
-    public function setCardiovasculaire(?Cardiovasculaire $cardiovasculaire): self
+    public function setDateNaissance(?\DateTimeInterface $dateNaissance): self
     {
-        $this->cardiovasculaire = $cardiovasculaire;
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
 
-    public function getInformation(): ?Information
+    public function getAge(): ?int
     {
-        return $this->information;
+        return $this->age;
     }
 
-    public function setInformation(?Information $information): self
+    public function setAge(?int $age): self
     {
-        $this->information = $information;
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getDateJour(): ?\DateTimeInterface
+    {
+        return $this->dateJour;
+    }
+
+    public function setDateJour(?\DateTimeInterface $dateJour): self
+    {
+        $this->dateJour = $dateJour;
 
         return $this;
     }

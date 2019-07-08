@@ -3,16 +3,17 @@
 namespace App\Form;
 
 use App\Entity\Participant;
-use App\Form\VerificationType;
 use App\Form\CardiovasculaireType;
-use App\Form\InformationType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use phpDocumentor\Reflection\Types\Integer;
 
 class ParticipantType extends AbstractType
 {
@@ -21,49 +22,45 @@ class ParticipantType extends AbstractType
         $builder
             ->add('nom', TextType::class, array(
                 'label' => 'Nom',
-                'required' => 'true',
+                'required' => true,
             ))
             ->add('prenom', TextType::class, array(
                 'label' => 'Prénom',
-                'required' => 'true',
+                'required' => true,
             ))
-            ->add('code', TextType::class, array(
-                'label' => 'Code',
+            ->add('sexe', ChoiceType::class, array(
+                'label' => 'Sexe',
                 'required' => 'true',
-                'attr' => array(
-                    'readonly' => true,
+                'expanded' => true,
+                'multiple' => false,
+                'placeholder' => false,
+                'choices' => array(
+                    'Homme' => 'Homme',
+                    'Femme' => 'Femme',
                 ),
             ))
-            ->add('numero', TextType::class, array(
-                'label' => 'Numéro',
-                'required' => 'true',
+            ->add('dateNaissance', DateType::class, array(
+                'label' => 'Date de naissance',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'required' => false,
             ))
-
-            // ->add('verification', EntityType::class, array(
-            //     'class' => Verification::class,
-            //     'choice_label' => 'date',
-            // ))
-
-            // ->add('verification', CollectionType::class, array(
-            //     'entry_type' => VerificationType::class,
-            //     'entry_options' => array('label' => false),
-            //     'allow_add' => true,
-            //     'by_reference' => false,
-            // ))
-
-            ->add('verification', VerificationType::class, array(
-                'label' => 'Verification'
+            ->add('dateJour', DateType::class, array(
+                'label' => 'Date du jour',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'required' => false,
+            ))
+            ->add('age', IntegerType::class, array(
+                'label' => 'Âge',
+                'required' => false,
             ))
 
             ->add('cardiovasculaire', CardiovasculaireType::class, array(
                 'label' => 'Cardiovasculaire'
             ))
 
-            ->add('information', InformationType::class, array(
-                'label' => 'Information'
-            ))
-
-            ->add('validation', SubmitType::class, array('label' => 'Ajouter'))
+            ->add('save', SubmitType::class, array('label' => 'Ajouter'))
         ;
     }
 

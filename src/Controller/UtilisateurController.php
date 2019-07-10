@@ -222,7 +222,7 @@ class UtilisateurController extends AbstractController
             $redirection = new RedirectResponse($router->generate('guest'));
         } else {
             // c'est un utilisaeur lambda : on le rediriger vers l'accueil
-            $redirection = new RedirectResponse($router->generate('index_participant'));
+            $redirection = new RedirectResponse($router->generate('index_patient'));
         }
 
         return $redirection;

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Participant;
+use App\Entity\Patient;
 use App\Form\CardiovasculaireType;
 
 use Symfony\Component\Form\AbstractType;
@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use phpDocumentor\Reflection\Types\Integer;
 
-class ParticipantType extends AbstractType
+class PatientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -67,7 +67,7 @@ class ParticipantType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Participant::class,
+            'data_class' => Patient::class,
             'allow_extra_fields' => true,
         ]);
     }

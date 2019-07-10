@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Participant;
+use App\Entity\Patient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Participant|null find($id, $lockMode = null, $lockVersion = null)
- * @method Participant|null findOneBy(array $criteria, array $orderBy = null)
- * @method Participant[]    findAll()
- * @method Participant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Patient|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Patient|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Patient[]    findAll()
+ * @method Patient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ParticipantRepository extends ServiceEntityRepository
+class PatientRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Participant::class);
+        parent::__construct($registry, Patient::class);
     }
 
     public function compte()
@@ -49,7 +49,7 @@ class ParticipantRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Participant[] Returns an array of Participant objects
+    //  * @return Patient[] Returns an array of Patient objects
     //  */
     /*
     public function findByExampleField($value)
@@ -66,7 +66,7 @@ class ParticipantRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Participant
+    public function findOneBySomeField($value): ?Patient
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

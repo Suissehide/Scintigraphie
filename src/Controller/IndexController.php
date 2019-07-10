@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Participant;
-use App\Repository\ParticipantRepository;
+use App\Entity\Patient;
+use App\Repository\PatientRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/index", name="index_participant")
+     * @Route("/index", name="index_patient")
      */
-    public function index(ParticipantRepository $participantRepository, Request $request): Response
+    public function index(PatientRepository $patientRepository, Request $request): Response
     {
         if ($request->isXmlHttpRequest()) {
             $current = $request->request->get('current');
@@ -24,25 +24,25 @@ class IndexController extends AbstractController
             $searchPhrase = $request->request->get('searchPhrase');
             $sort = $request->request->get('sort');
 
-            $participants = $participantRepository->findByFilter($sort, $searchPhrase);
+            $patients = $patientRepository->findByFilter($sort, $searchPhrase);
             if ($searchPhrase != "") {
-                $count = count($participants->getQuery()->getResult());
+                $count = count($patients->getQuery()->getResult());
             } else {
-                $count = $participantRepository->compte();
+                $count = $patientRepository->compte();
             }
             if ($rowCount != -1) {
                 $min = ($current - 1) * $rowCount;
                 $max = $rowCount;
-                $participants->setMaxResults($max)->setFirstResult($min);
+                $patients->setMaxResults($max)->setFirstResult($min);
             }
-            $participants = $participants->getQuery()->getResult();
+            $patients = $patients->getQuery()->getResult();
             $rows = array();
-            foreach ($participants as $participant) {
+            foreach ($patients as $patient) {
                 $sortie = 0;
                 $row = array(
-                    "id" => $participant->getId(),
-                    "nom" => $participant->getNom(),
-                    "prenom" => $participant->getPrenom(),
+                    "id" => $patient->getId(),
+                    "nom" => $patient->getNom(),
+                    "prenom" => $patient->getPrenom(),
                     "status" => $sortie,
                 );
                 array_push($rows, $row);

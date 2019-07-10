@@ -45,9 +45,9 @@ class Utilisateur implements UserInterface
     private $plainPassword;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Participant", mappedBy="utilisateurs")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Patient", mappedBy="utilisateurs")
      */
-    private $participants;
+    private $patients;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -61,7 +61,7 @@ class Utilisateur implements UserInterface
 
     public function __construct()
     {
-        $this->participants = new ArrayCollection();
+        $this->patients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,28 +156,28 @@ class Utilisateur implements UserInterface
     }
 
     /**
-     * @return Collection|Participant[]
+     * @return Collection|Patient[]
      */
     public function getParticipants(): Collection
     {
-        return $this->participants;
+        return $this->patients;
     }
 
-    public function addParticipant(Participant $participant): self
+    public function addParticipant(Patient $patient): self
     {
-        if (!$this->participants->contains($participant)) {
-            $this->participants[] = $participant;
-            $participant->addUtilisateur($this);
+        if (!$this->patients->contains($patient)) {
+            $this->patients[] = $patient;
+            $patient->addUtilisateur($this);
         }
 
         return $this;
     }
 
-    public function removeParticipant(Participant $participant): self
+    public function removeParticipant(Patient $patient): self
     {
-        if ($this->participants->contains($participant)) {
-            $this->participants->removeElement($participant);
-            $participant->removeUtilisateur($this);
+        if ($this->patients->contains($patient)) {
+            $this->patients->removeElement($patient);
+            $patient->removeUtilisateur($this);
         }
 
         return $this;

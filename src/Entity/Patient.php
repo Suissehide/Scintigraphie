@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ParticipantRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
  */
-class Participant
+class Patient
 {
     /**
      * @ORM\Id()
@@ -29,7 +29,7 @@ class Participant
     private $prenom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", inversedBy="participants")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", inversedBy="patients")
      */
     private $utilisateurs;
 
@@ -52,6 +52,11 @@ class Participant
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateJour;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Cardiovasculaire", cascade={"persist", "remove"})
+     */
+    private $cardiovasculaire;
 
     public function __construct()
     {
@@ -157,6 +162,18 @@ class Participant
     public function setDateJour(?\DateTimeInterface $dateJour): self
     {
         $this->dateJour = $dateJour;
+
+        return $this;
+    }
+
+    public function getCardiovasculaire(): ?Cardiovasculaire
+    {
+        return $this->cardiovasculaire;
+    }
+
+    public function setCardiovasculaire(?Cardiovasculaire $cardiovasculaire): self
+    {
+        $this->cardiovasculaire = $cardiovasculaire;
 
         return $this;
     }

@@ -315,7 +315,8 @@ label {
 /* ========= Participant ========= */
 
 .main {
-    padding: 0 15px 0 350px;
+    padding-right: 15px;
+    padding-left: 25%;
 }
 
 .hero-tabs {
@@ -332,6 +333,14 @@ label {
 
 .hero-title {
     margin-bottom: 50px;
+}
+
+
+.hero-header .intro span {
+    background-color: #3CBCC3;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .hero-center {
@@ -362,13 +371,6 @@ label {
     position: relative;
     margin-bottom: 50px;
     font-size: 32px;
-}
-
-.hero-tabs h1 span {
-    background-color: #3CBCC3;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
 .slide h1::before {
@@ -580,7 +582,8 @@ main h3 {
     position: absolute;
     left: 100px;
     top: 520px;
-    width: 300px;
+    width: 20%;
+    /* min-width: 300px; */
     padding: 1em;
     line-height: 2;
 }
@@ -598,6 +601,11 @@ main h3 {
     margin: 0;
 }
 
+.toc ul li {
+    display: flex;
+    flex-flow: column;
+}
+
 .toc ul ul {
     padding-left: 2em;
 }
@@ -608,6 +616,11 @@ main h3 {
     font-size: 14px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding: 2px 0;
 }
 
 .toc li.visible>a {

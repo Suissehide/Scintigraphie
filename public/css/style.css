@@ -597,13 +597,20 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
     flex-direction: column;
     justify-content: center;
     background-color: #e6e6e6;
-    border-radius: 3px;
+    border-radius: 0px;
     padding: 0 20px;
+}
+
+.radio-container:first-child {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
 }
 
 .radio-container:last-child {
     margin: 0;
     padding: 0 20px 0 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .radio-container label {
@@ -716,14 +723,14 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
 @media only screen and (min-width: 768px) {
     .cd-top {
         right: 20px;
-        bottom: 40px;
+        bottom: 30px;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     .cd-top {
         right: 30px;
-        bottom: 80px;
+        bottom: 40px;
     }
 }
 

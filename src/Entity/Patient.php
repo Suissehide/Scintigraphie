@@ -49,11 +49,6 @@ class Patient
     private $age;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dateJour;
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\Cardiovasculaire", cascade={"persist", "remove"})
      */
     private $cardiovasculaire;
@@ -150,18 +145,6 @@ class Patient
     public function setAge(?int $age): self
     {
         $this->age = $age;
-
-        return $this;
-    }
-
-    public function getDateJour(): ?\DateTimeInterface
-    {
-        return $this->dateJour;
-    }
-
-    public function setDateJour(?\DateTimeInterface $dateJour): self
-    {
-        $this->dateJour = $dateJour;
 
         return $this;
     }

@@ -78,10 +78,16 @@
         <!-- Hero -->
         <section class="hero-tabs">
             <div class="hero-header">
-                <div class="flex-row hero-title">
-                    <h1 id="intro">PATIENT 
-                        <span>{{ patient.nom }}</span>
+                <div id="title" class="hero-title">
+                    <h1 class="hero-center">
+                        Etude de la réserve coronaire en scintigraphie
+                        <br>chez le patient diabétique
                     </h1>
+                </div>
+                <div class="hero-title">
+                    <h3 class="intro">PATIENT&nbsp;
+                        <span>{{ patient.nom }}&nbsp;{{ patient.prenom }}</span>
+                    </h3>
                 </div>
 
                 <div class="button-block">
@@ -108,7 +114,7 @@
         <!-- Toc -->
         <nav class="toc">
             <ul>
-                <li><a href="#intro">Participant {{ patient.nom }}</a></li>
+                <li><a href="#title">Patient {{ patient.nom }}</a></li>
                 <li>
                     <a href="#informations">Informations générales</a>
                 </li>
@@ -121,12 +127,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#information">Informations sur l’évènement cardiovasculaire</a>
+                    <a href="#paracliniques">Examens paracliniques</a>
                     <ul>
-                        <li><a href="#type">Type d’infarctus du myocarde</a></li>
-                        <li><a href="#aigue">Traitement à la phase aiguë</a></li>
-                        <li><a href="#complication">Complications immédiates</a></li>
-                        <li><a href="#biologie1">Biologie</a></li>
+                        <li><a href="#biologie">Biologie</a></li>
+                        <li><a href="#doppler">Ultrasons doppler</a></li>
+                        <li><a href="#examens">Examens sensoriels</a></li>
+                        <li><a href="#scintigraphie">Scintigraphie</a></li>
                     </ul>
                 </li>
                 <li>
@@ -141,7 +147,6 @@
                         <li><a href="#evaluation">Evaluation cardiovasculaire</a></li>
                     </ul>
                 </li>
-                <li><a href="#deces">Fiche Décès</a></li>
             </ul>
             <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
                 <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
@@ -156,6 +161,27 @@
             <section class="slide" id="tab-generales">
                 <h1 id="informations">Informations générales</h1>
                 <div class="form-space">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.nom, {'attr': {'autofocus' : true, 'class': 'input', 'autocomplete' : 'off'} }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.prenom, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.sexe, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.dateNaissance, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.age, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -235,6 +261,7 @@
                 {# <div class="margin-space"></div> #}
 
                 <h3 id="examens">Examens sensoriels</h3>
+                <div class="form-space"></div>
 
                 <h3 id="scintigraphie">Scintigraphie</h3>
 
@@ -265,7 +292,7 @@
 
         </main>
 
-        <div class="cd-top js-cd-top">
+        <div class="cd-top cd-top--fade-out js-cd-top">
             <a href="{{ path('index_patient') }}" class="cd-btn btn-back">
                 <i aria-hidden="true" class="fa fa-arrow-left"></i>
             </a>

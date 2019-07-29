@@ -45,12 +45,6 @@ class PatientType extends AbstractType
                 'format' => 'dd/MM/yyyy',
                 'required' => false,
             ))
-            ->add('dateJour', DateType::class, array(
-                'label' => 'Date du jour',
-                'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'required' => false,
-            ))
             ->add('age', IntegerType::class, array(
                 'label' => 'Âge',
                 'required' => false,

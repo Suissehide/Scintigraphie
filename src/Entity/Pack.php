@@ -24,7 +24,7 @@ class Pack
     private $qcm;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\QcmDate", mappedBy="pack")
+     * @ORM\OneToMany(targetEntity="App\Entity\QcmDate", mappedBy="pack", cascade={"persist", "remove"})
      */
     private $qcmDate;
 

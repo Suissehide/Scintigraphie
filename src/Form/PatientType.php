@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Patient;
 use App\Form\CardiovasculaireType;
+use App\Form\SuiviType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,6 +44,9 @@ class PatientType extends AbstractType
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
                 'required' => false,
             ))
             ->add('age', IntegerType::class, array(
@@ -55,6 +59,11 @@ class PatientType extends AbstractType
 
             ->add('cardiovasculaire', CardiovasculaireType::class, array(
                 'label' => 'Cardiovasculaire'
+            ))
+
+
+            ->add('suivi', SuiviType::class, array(
+                'label' => 'Suivi'
             ))
 
             ->add('save', SubmitType::class, array('label' => 'Ajouter'))

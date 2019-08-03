@@ -20,6 +20,9 @@ class CardiovasculaireType extends AbstractType
                 'label' => 'Depuis',
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
                 'required' => false,
             ))
             ->add('systolique', IntegerType::class, array(
@@ -112,6 +115,9 @@ class CardiovasculaireType extends AbstractType
                 'label' => 'Depuis',
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
                 'required' => false,
             ))
             ->add('retinopathie', ChoiceType::class, array(
@@ -149,9 +155,9 @@ class CardiovasculaireType extends AbstractType
                     'Info non disponible' => 'Info non disponible',
                 ),
             ))
-            ->add('antecedents', PackType::class, array( ))
+            ->add('antecedents', PackType::class, array())
 
-            ->add('precisions', PackType::class, array( ))
+            ->add('precisions', PackType::class, array())
         ;
     }
 

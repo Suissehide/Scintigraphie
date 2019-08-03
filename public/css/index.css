@@ -166,6 +166,7 @@ td .btn-default {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 .form>ul {
@@ -614,7 +615,7 @@ main h3 {
 .toc {
     position: absolute;
     left: 100px;
-    top: 520px;
+    top: 505px;
     width: 20%;
     /* min-width: 300px; */
     padding: 1em;

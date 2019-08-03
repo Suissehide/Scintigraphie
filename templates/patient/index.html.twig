@@ -75,15 +75,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#evenement">Données à 6 mois de l'événement</a>
+                    <a href="#suivi">Suivi</a>
                     <ul>
-                        <li><a href="#recidive">Récidive</a></li>
-                        <li><a href="#clinique">Clinique</a></li>
-                        <li><a href="#facteur">Facteurs de risque cardiovasculaire</a></li>
-                        <li><a href="#place">Traitement mis en place suite à l'évènement cardiovasculaire</a></li>
-                        <li><a href="#biologie2">Biologie</a></li>
-                        <li><a href="#hematopoiese">Hématopoïèse Clonale</a></li>
-                        <li><a href="#evaluation">Evaluation cardiovasculaire</a></li>
+                        <li><a href="#evenement">Événement(s) clinique(s)/biologique(s) indésirable(s) survenu(s) depuis l’inclusion</a></li>
                     </ul>
                 </li>
             </ul>
@@ -115,7 +109,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form_row(form.dateNaissance, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                            {{ form_row(form.dateNaissance, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
                         </div>
                         <div class="col-md-6">
                             {{ form_row(form.age, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
@@ -134,7 +128,7 @@
                     <h5>HTA</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form_row(form.cardiovasculaire.dateHTA, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                            {{ form_row(form.cardiovasculaire.dateHTA, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
                         </div>
                     </div>
                     <div class="row">
@@ -219,7 +213,7 @@
                     <div id="diabete" class="hdn">
                         <div class="row">
                             <div class="col-md-6">
-                                {{ form_row(form.cardiovasculaire.dateDiabete, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                                {{ form_row(form.cardiovasculaire.dateDiabete, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
                             </div>
                         </div>
                         <div class="row">
@@ -321,7 +315,34 @@
             <section class="slide" id="tab-suivi">
                 <h1 id="suivi">Suivi</h1>
 
-                <h3 id="evenement">Evénement(s) clinique(s)/biologique(s) indésirable(s) survenu(s) depuis l’inclusion</h3>
+                <h3 id="evenement">Événement(s) clinique(s)/biologique(s) indésirable(s) survenu(s) depuis l’inclusion</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.suivi, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+                <div class="hdn" id="qcm-date">
+                    <h5>Événements</h5>
+                    <div class="qcm qcm__date">
+                        {% for pack in form.suivi.evenements.qcmDate %}
+                            <div class="qcm-row">
+                                <div class="qcm-question">
+                                    {{ form_widget(pack.question, {'attr': {'class': 'input'} }) }}
+                                </div>
+                                <div class="qcm-response">
+                                    <div class="wrap-input">
+                                        {{ form_widget(pack.reponse, {'attr': {'class': 'input radio-row'} }) }}
+                                    </div>
+                                </div>
+                                <div class="qcm-date hdn">
+                                    <div class="wrap-input">
+                                        {{ form_widget(pack.date, {'attr': {'class': 'input js-datepicker'} }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </section>
 
             {{ form_row(form._token) }}
@@ -356,6 +377,15 @@
             $(this).addClass('active');
         });
 
+        jQuery(document).ready(function () {
+            $('.js-datepicker').datepicker({
+                language: 'fr',
+                clearButton: true,
+                onSelect: function (formattedDate, date, inst) {}
+            });
+        });
+
+        /* Cardiovasculaire */
         function tabagisme(val) {
             let p = $('#patient_cardiovasculaire_paquetAnnee').parents('.row');
             if (!p.is(":visible") && val == 'Actif')
@@ -375,6 +405,29 @@
         }
         diabete($('patient_cardiovasculaire_diabete').val());
         $('input[type=radio][name="patient[cardiovasculaire][diabete]"]').on('change', function() {diabete($(this).val())});
+    
+        /* Suivi */
+        function qcmDate() {
+            $('.qcm__date .qcm-row').each(function(i, e) {
+                let d = $(e).find('.qcm-date');
+                if ($(e).find('.qcm-response input[type=radio]:checked').val() == "Oui" && !d.is(":visible"))
+                    d.toggle('fast');
+                else if ($(e).find('.qcm-response input[type=radio]:checked').val() != "Oui" && d.is(":visible"))
+                    d.toggle('fast');
+            });
+        }
+        qcmDate();
+        $('.qcm__date .qcm-response input[type=radio]').on('change', function() {qcmDate()});
+
+        function evenements(val) {
+            let p = $('#qcm-date');
+            if (!p.is(":visible") && val == 'Oui')
+                p.toggle('normal');
+            else if (p.is(":visible"))
+                p.toggle('normal');
+        }
+        evenements($('#patient_cardiovasculaire_tabagisme').val());
+        $('input[type=radio][name="patient[suivi][suivi]"]').on('change', function() {evenements($(this).val())});
     </script>
 
     <script>

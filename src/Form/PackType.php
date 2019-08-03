@@ -19,6 +19,12 @@ class PackType extends AbstractType
                 'allow_add' => true,
                 'by_reference' => false,
             ))
+            ->add('qcmDate', CollectionType::class, array(
+                'entry_type' => QcmDateType::class,
+                'entry_options' => array('label' => false),
+                'allow_add' => true,
+                'by_reference' => false,
+            ))
         ;
     }
 

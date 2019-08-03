@@ -3,19 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Patient;
-use App\Entity\Verification;
 use App\Entity\Qcm;
+use App\Entity\QcmDate;
 use App\Entity\Pack;
+use App\Entity\Cardiovasculaire;
+use App\Entity\Suivi;
 
 use App\Form\PatientType;
-use App\Form\VerificationType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Cardiovasculaire;
 
 class PatientController extends AbstractController
 {
@@ -34,6 +34,7 @@ class PatientController extends AbstractController
                 $patient = $form->getData();
 
                 $this->cardiovasculaire_create($patient);
+                $this->suivi_create($patient);
 
                 $em->persist($patient);
                 $em->flush();
@@ -46,6 +47,60 @@ class PatientController extends AbstractController
             'form' => $form->createView(),
             'verification' => $form->createView(),
         ]);
+    }
+
+    private function suivi_create(Patient $patient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $suivi = new Suivi();
+
+        $pack = new Pack();
+
+        $qcm = new QcmDate();
+        $qcm->setQuestion("IDM-SCA");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Angor stable");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Angioplastie coronaire");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Pontage coronaire");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Insuffisance cardiaque stade III ou IV");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("AVC");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("AIT");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Endartériectomie carotidienne");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Artérite des membres inférieurs");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Angioplastie périphérique");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Pontage périphérique");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Anévrisme aorte abdominale");
+        $pack->addQcmDate($qcm);
+        $qcm = new QcmDate();
+        $qcm->setQuestion("Décès");
+        $pack->addQcmDate($qcm);  
+
+        $suivi->setEvenements($pack);
+
+        $em->persist($suivi);
+        $em->flush();
+        $patient->setSuivi($suivi);
     }
 
     private function cardiovasculaire_create(Patient $patient)

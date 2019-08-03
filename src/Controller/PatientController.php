@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Cardiovasculaire;
 
 class PatientController extends AbstractController
 {
@@ -32,7 +33,7 @@ class PatientController extends AbstractController
             if ($form->get('save')->isClicked()) {
                 $patient = $form->getData();
 
-                // $this->verification_create($patient);
+                $this->cardiovasculaire_create($patient);
 
                 $em->persist($patient);
                 $em->flush();
@@ -47,80 +48,81 @@ class PatientController extends AbstractController
         ]);
     }
 
-    private function verification_create(Patient $patient)
+    private function cardiovasculaire_create(Patient $patient)
     {
         $em = $this->getDoctrine()->getManager();
-        $verification = new Verification();
+        $cardiovasculaire = new Cardiovasculaire();
 
         $pack = new Pack();
 
         $qcm = new Qcm();
-        $qcm->setQuestion("Patients (homme ou femme) âgés de plus de 80 ans");
-        $qcm->setReponse("oui");
+        $qcm->setQuestion("IDM-SCA");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient présentant un premier ECV (Infarctus du myocarde - IDM) d’origine athéromateuse datant de 6 mois (+/- 15 jours)");
-        $qcm->setReponse("oui");
+        $qcm->setQuestion("Angor stable");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Absence de preuve pour une hémopathie maligne avérée (connue ou révélée sur les résultats de NFS)");
-        $qcm->setReponse("oui");
+        $qcm->setQuestion("Angioplastie coronaire");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Sujet affilié ou bénéficiaire d’un régime de sécurité sociale");
-        $qcm->setReponse("oui");
+        $qcm->setQuestion("Pontage coronaire");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Signature du consentement éclairé, Date ");
-        $qcm->setReponse("oui");
+        $qcm->setQuestion("Insuffisance cardiaque stade III ou IV");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("AVC");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("AIT");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Endartériectomie carotidienne");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Artérite des membres inférieurs");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Angioplastie périphérique");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Pontage périphérique");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Antécédent de fibrillation auriculaire");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Antécédent d’insuffisance cardiaque");
+        $pack->addQcm($qcm);
+        $qcm = new Qcm();
+        $qcm->setQuestion("Valvulopathie (>grade 2 ou >modérée)");
         $pack->addQcm($qcm);
 
-        $verification->setInclusion($pack);
+        $cardiovasculaire->setAntecedents($pack);
 
         $pack = new Pack();
 
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient ayant présenté un ECV d’origine non-athéromateuse (dissection, embolique, ...)");
-        $qcm->setReponse("non");
+        $qcm->setQuestion("Sus décalage ST");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient présentant un diabète mal équilibré (HbA1c > 10%)");
-        $qcm->setReponse("non");
+        $qcm->setQuestion("Antérieur");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient ayant présenté un ou plusieurs ECV avant 80 ans : IDM, coronaropathie, AOMI, sténose carotidienne significative, accident vasculaire cérébral (AVC) d’origine athéromateuse");
-        $qcm->setReponse("non");
+        $qcm->setQuestion("Septo-apical");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient présentant une hémopathie maligne manifeste (connue ou révélée sur les résultats de NFS)");
-        $qcm->setReponse("non");
+        $qcm->setQuestion("Latéral");
         $pack->addQcm($qcm);
         $qcm = new Qcm();
-        $qcm->setQuestion("Patient présentant une maladie inflammatoire chronique (cancer, vascularite, rhumatismale, hépato-gastro-intestinales)");
-        $qcm->setReponse("non");
-        $pack->addQcm($qcm);
-        $qcm = new Qcm();
-        $qcm->setQuestion("Patient traité par anti-inflammatoire au long cours (Corticoïdes, Anti-inflammatoires non stéroïdiens, Aspirine > 325mg/jour, Inhibiteurs de la cyclo-oxygénase II)");
-        $qcm->setReponse("non");
-        $pack->addQcm($qcm);
-        $qcm = new Qcm();
-        $qcm->setQuestion("Personne placée sous sauvegarde de justice, tutelle ou curatelle");
-        $qcm->setReponse("non");
-        $pack->addQcm($qcm);
-        $qcm = new Qcm();
-        $qcm->setQuestion("Personne étant dans l’incapacité de donner son consentement");
-        $qcm->setReponse("non");
-        $pack->addQcm($qcm);
-        $qcm = new Qcm();
-        $qcm->setQuestion("Sujet non coopérant");
-        $qcm->setReponse("non");
+        $qcm->setQuestion("Inférieur");
         $pack->addQcm($qcm);
 
-        $verification->setNonInclusion($pack);
+        $cardiovasculaire->setPrecisions($pack);
 
-        $em->persist($verification);
+        $em->persist($cardiovasculaire);
         $em->flush();
-        $patient->setVerification($verification);
+        $patient->setCardiovasculaire($cardiovasculaire);
     }
 
     /**

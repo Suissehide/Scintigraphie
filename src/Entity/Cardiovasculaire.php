@@ -32,11 +32,6 @@ class Cardiovasculaire
     private $diastolique;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dateSevrage;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tabagisme;
@@ -138,18 +133,6 @@ class Cardiovasculaire
     public function setDiastolique(?int $diastolique): self
     {
         $this->diastolique = $diastolique;
-
-        return $this;
-    }
-
-    public function getDateSevrage(): ?\DateTimeInterface
-    {
-        return $this->dateSevrage;
-    }
-
-    public function setDateSevrage(?\DateTimeInterface $dateSevrage): self
-    {
-        $this->dateSevrage = $dateSevrage;
 
         return $this;
     }

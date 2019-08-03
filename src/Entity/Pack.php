@@ -23,9 +23,15 @@ class Pack
      */
     private $qcm;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\QcmDate", mappedBy="pack")
+     */
+    private $qcmDate;
+
     public function __construct()
     {
         $this->qcm = new ArrayCollection();
+        $this->qcmDate = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,6 +64,37 @@ class Pack
             // set the owning side to null (unless already changed)
             if ($qcm->getPack() === $this) {
                 $qcm->setPack(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|QcmDate[]
+     */
+    public function getQcmDate(): Collection
+    {
+        return $this->qcmDate;
+    }
+
+    public function addQcmDate(QcmDate $qcmDate): self
+    {
+        if (!$this->qcmDate->contains($qcmDate)) {
+            $this->qcmDate[] = $qcmDate;
+            $qcmDate->setPack($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQcmDate(QcmDate $qcmDate): self
+    {
+        if ($this->qcmDate->contains($qcmDate)) {
+            $this->qcmDate->removeElement($qcmDate);
+            // set the owning side to null (unless already changed)
+            if ($qcmDate->getPack() === $this) {
+                $qcmDate->setPack(null);
             }
         }
 

@@ -48,6 +48,9 @@ class PatientType extends AbstractType
             ->add('age', IntegerType::class, array(
                 'label' => 'Âge',
                 'required' => false,
+                // 'attr' => array(
+                //     'useStyle' => false,
+                // ),
             ))
 
             ->add('cardiovasculaire', CardiovasculaireType::class, array(

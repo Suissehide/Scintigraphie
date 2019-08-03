@@ -236,6 +236,7 @@ input[readonly]:focus {
 
 .form-btn:hover {
     background-color: #2d5a2e;
+    color: #fff;
 }
 
 .btn-danger {
@@ -335,6 +336,25 @@ label {
     margin-bottom: 50px;
 }
 
+#title {
+    margin-bottom: 80px;
+}
+
+#title h1 {
+    position: relative;
+}
+
+#title h1::before {
+    content: "";
+    position: absolute;
+    text-align: center;
+    border: 0;
+    height: 5px;
+    background-color: #1D1D2C;
+    width: 100px;
+    bottom: -20px;
+    left: calc(50% - 50px);
+}
 
 .hero-header .intro span {
     background-color: #3CBCC3;
@@ -362,7 +382,7 @@ label {
 }
 
 .slide {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     position: relative;
     padding: 50px 0px 0 0px;
 }
@@ -394,8 +414,21 @@ main h3 {
 
 .hero-tabs h5,
 .slide h5 {
+    position: relative;
+    width: fit-content;
     font-size: 18px;
     margin: 10px 0;
+}
+
+.slide h5::after {
+    content: "";
+    position: absolute;
+    border: 0;
+    height: 8px;
+    background-color: rgb(235, 166, 63, 0.5);
+    width: 30px;
+    bottom: -2px;
+    left: -2px;
 }
 
 .margin-space {
@@ -498,7 +531,7 @@ main h3 {
 }
 
 .qcm-response {
-    width: 30%;
+    /* width: 30%; */
 }
 
 .qcm-response .wrap-input {

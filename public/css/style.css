@@ -190,6 +190,10 @@ iframe {
     border: none !important;
 }
 
+.hdn {
+    display: none;
+}
+
 .txt1 {
     font-family: Ubuntu-Regular;
     font-size: 16px;
@@ -371,6 +375,31 @@ iframe {
 .alert {
     width: 100%;
     margin-bottom: 35px;
+}
+
+.container-form .form-unity {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.container-form .form-unity > input {
+    flex: 80%;
+    margin-bottom: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.unity {
+    /* flex: 20; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+    color: #3CBCC3;
+    font-weight: bold;
+    background-color: #e6e6e6;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 /* ========= CHECKBOX ========= */
@@ -598,7 +627,7 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
     justify-content: center;
     background-color: #e6e6e6;
     border-radius: 0px;
-    padding: 0 20px;
+    padding-left: 20px;
 }
 
 .radio-container:first-child {
@@ -608,7 +637,7 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
 
 .radio-container:last-child {
     margin: 0;
-    padding: 0 20px 0 0;
+    padding-right: 20px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
@@ -686,11 +715,11 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
     color: white;
 }
 
-.btn-check {
+.btn-save {
     background: #438945cc;
 }
 
-.btn-check:hover {
+.btn-save:hover {
     background: #438945;
     color: white;
 }
@@ -729,8 +758,8 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
 
 @media only screen and (min-width: 1024px) {
     .cd-top {
-        right: 30px;
-        bottom: 40px;
+        right: 35px;
+        bottom: 35px;
     }
 }
 

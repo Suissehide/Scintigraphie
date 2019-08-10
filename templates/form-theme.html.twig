@@ -60,7 +60,7 @@
 {% endblock form_row %}
 
 {% block integer_widget %}
-    {% set type = type|default('number') %}
+    {% set type = type|default('integer') %}
     {% if not useStyle|default(false) %}
         {{ block('form_widget_simple') }}
     {% else %}
@@ -71,3 +71,16 @@
         </div>
     {% endif %}
 {% endblock integer_widget %}
+
+{% block number_widget %}
+    {% set type = type|default('number') %}
+    {% if not useStyle|default(false) %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        <div class="form-unity">
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+            <span class="focus-input"></span>
+            <div class="unity">{{ attr.unity|default('') }}</div>
+        </div>
+    {% endif %}
+{% endblock number_widget %}

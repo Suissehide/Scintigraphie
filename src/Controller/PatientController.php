@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Paraclinique;
+use App\Entity\Bullseye;
+use App\Entity\Segment;
 
 class PatientController extends AbstractController
 {
@@ -34,6 +37,7 @@ class PatientController extends AbstractController
                 $patient = $form->getData();
 
                 $this->cardiovasculaire_create($patient);
+                $this->paraclinique_create($patient);
                 $this->suivi_create($patient);
 
                 $em->persist($patient);
@@ -47,6 +51,29 @@ class PatientController extends AbstractController
             'form' => $form->createView(),
             'verification' => $form->createView(),
         ]);
+    }
+
+    private function paraclinique_create(Patient $patient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $paraclinique = new Paraclinique();
+
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $paraclinique->setDebitRegadenosonSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $paraclinique->setDebitReposSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $paraclinique->setAnalyseRegadenosonSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $paraclinique->setAnalyseReposSegment($bullseyes);
+
+        $em->persist($paraclinique);
+        $em->flush();
+        $patient->setParaclinique($paraclinique);
     }
 
     private function suivi_create(Patient $patient)
@@ -190,10 +217,8 @@ class PatientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->get('validation')->isClicked()) {
-                $patient = $form->getData();
-                $em->flush();
-            }
+            $patient = $form->getData();
+            $em->flush();
             return $this->redirect($request->getUri());
         }
 

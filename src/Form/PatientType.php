@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Patient;
 use App\Form\CardiovasculaireType;
+use App\Form\ParacliniqueType;
 use App\Form\SuiviType;
 
 use Symfony\Component\Form\AbstractType;
@@ -61,6 +62,9 @@ class PatientType extends AbstractType
                 'label' => 'Cardiovasculaire'
             ))
 
+            ->add('paraclinique', ParacliniqueType::class, array(
+                'label' => 'Paraclinique'
+            ))
 
             ->add('suivi', SuiviType::class, array(
                 'label' => 'Suivi'

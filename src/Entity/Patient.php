@@ -58,6 +58,11 @@ class Patient
      */
     private $suivi;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Paraclinique", cascade={"persist", "remove"})
+     */
+    private $paraclinique;
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
@@ -174,6 +179,18 @@ class Patient
     public function setSuivi(?Suivi $suivi): self
     {
         $this->suivi = $suivi;
+
+        return $this;
+    }
+
+    public function getParaclinique(): ?Paraclinique
+    {
+        return $this->paraclinique;
+    }
+
+    public function setParaclinique(?Paraclinique $paraclinique): self
+    {
+        $this->paraclinique = $paraclinique;
 
         return $this;
     }

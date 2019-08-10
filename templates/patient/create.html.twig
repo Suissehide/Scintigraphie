@@ -76,11 +76,29 @@
             $(this).addClass('active');
         });
 
+
+        function getAge(dateString) {
+            var today = new Date();
+            let dateArray = dateString.split('/');
+            var date = new Date(dateArray[2], dateArray[1], dateArray[0]);
+            var age = today.getFullYear() - date.getFullYear();
+            var m = today.getMonth() - date.getMonth();
+            if (isNaN(age))
+                return -1;
+            if (m < 0 || (m === 0 && today.getDate() < date.getDate())) 
+                age--;
+            return age;
+        }
+        $('#patient_dateNaissance').on('change', function() {
+            $('#patient_age').val(getAge($(this).val()));
+        })
         jQuery(document).ready(function () {
             $('.js-datepicker').datepicker({
                 language: 'fr',
                 clearButton: true,
-                onSelect: function (formattedDate, date, inst) {}
+                onSelect: function (formattedDate, date, inst) {
+                    $('#patient_age').val(getAge(formattedDate));
+                }
             });
         });
     </script>

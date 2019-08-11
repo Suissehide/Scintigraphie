@@ -212,6 +212,7 @@ class PatientController extends AbstractController
      */
     public function index(Patient $patient, Request $request): Response
     {
+        $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(PatientType::class, $patient);
         $form->handleRequest($request);
@@ -219,6 +220,7 @@ class PatientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $patient = $form->getData();
             $em->flush();
+            $session->getFlashBag()->add('success', 'Vos modifications ont été enregistré avec succès');
             return $this->redirect($request->getUri());
         }
 

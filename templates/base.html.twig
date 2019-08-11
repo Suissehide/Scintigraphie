@@ -21,7 +21,7 @@
         {# ======= flashbag ======= #}
         <div class="row">
             {% if app.request.hasPreviousSession %}
-                {% set top = 60 %}
+                {% set top = 75 %}
                 {% for type, messages in app.session.flashbag.all() %}
                     {% for message in messages %}
                         <div class="row alerte alert-{{ type }} text-center box-shadow" style="top:{{ top }}px;">

@@ -23,7 +23,7 @@
 
 
                 <div class="wrap-input validate-input" data-validate="Password is required">
-                    <input class="input" type="password" name="_password" id="inputPassword" placeholder="Mot de passe" required>
+                    <input class="input" id="inputPassword" name="_password" placeholder="Mot de passe" required type="password">
                     <span class="focus-input"></span>
                 </div>
 
@@ -64,13 +64,17 @@
     <script src="{{ asset('js/trianglify.min.js') }}"></script>
 
     <script>
-        $('body').css({'overflow':'hidden'});
+        $('body').css({'overflow': 'hidden'});
 
         var pattern = Trianglify({
             height: window.innerHeight,
             width: window.innerWidth,
-            x_colors: ['#E40C2B', '#438945', '#F7F4E9'],
-            y_colors: ['#1D1D2C', '#3CBCC3', '#F7F4E9'],
+            x_colors: [
+                '#E40C2B', '#438945', '#F7F4E9'
+            ],
+            y_colors: [
+                '#1D1D2C', '#3CBCC3', '#F7F4E9'
+            ],
             // cell_size: Math.ceil(window.innerWidth / 8)
         })
         var svg = pattern.svg()

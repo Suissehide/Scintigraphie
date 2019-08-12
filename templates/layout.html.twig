@@ -3,55 +3,47 @@
 {% block body %}
 
     {% block menu %}
-    <nav class="nav sidebar-navigation">
-        <ul>
-            <li>
-                <a href="{{ url('utilisateur_edit') }}">
-                    <i class="fa fa-user-circle"></i>
-                    <span class="tooltip">{{ app.user.username }}</span>
-                </a>
-            </li>
-            {% if is_granted('ROLE_USER') %}
+        <nav class="nav sidebar-navigation">
+            <ul>
                 <li>
-                    <a href="{{ url('index_patient') }}">
-                        <i class="fa fa-list"></i>
-                        <span class="tooltip">Liste des patients</span>
+                    <a href="{{ url('utilisateur_edit') }}">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="tooltip">{{ app.user.username }}</span>
                     </a>
                 </li>
+                {% if is_granted('ROLE_USER') %}
+                    <li>
+                        <a href="{{ url('index_patient') }}">
+                            <i class="fa fa-list"></i>
+                            <span class="tooltip">Liste des patients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('patient_add') }}">
+                            <i class="fa fa-user-plus"></i>
+                            <span class="tooltip">Ajout d'un patient</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('utilisateur_list') }}">
+                            <i class="fa fa-address-book"></i>
+                            <span class="tooltip">Liste des utilisateurs</span>
+                        </a>
+                    </li>
+                {% endif %}
                 <li>
-                    <a href="{{ url('patient_add') }}">
-                        <i class="fa fa-user-plus"></i>
-                        <span class="tooltip">Ajout d'un patient</span>
+                    <a href="{{ url('logout') }}">
+                        <i class="fa fa-power-off"></i>
+                        <span class="tooltip">Déconnexion</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ url('utilisateur_list') }}">
-                        <i class="fa fa-address-book"></i>
-                        <span class="tooltip">Liste des utilisateurs</span>
-                    </a>
-                </li>
-            {# <li>
-                <a href="#">
-                    <i class="fa fa-cog"></i>
-                    <span class="tooltip">Réglages</span>
-                 </a>
-            </li> #}
-            {% endif %}
-            <li>
-                <a href="{{ url('logout') }}">
-                    <i class="fa fa-power-off"></i>
-                    <span class="tooltip">Déconnexion</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+            </ul>
+        </nav>
 
     {% endblock %}
 
     <div class="navbar-wrapper">
-        {% block page_content %}
-
-        {% endblock %}
+        {% block page_content %}{% endblock %}
     </div>
 
 {% endblock %}

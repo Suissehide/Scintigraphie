@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -232,14 +230,6 @@ class Paraclinique
      * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
      */
     private $analyseRegadenosonSegment;
-
-    public function __construct()
-    {
-        $this->debitReposSegment = new ArrayCollection();
-        $this->debitRegadenosonSegment = new ArrayCollection();
-        $this->analyseReposSegment = new ArrayCollection();
-        $this->analyseRegadenosonSegment = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -714,6 +704,20 @@ class Paraclinique
         return $this;
     }
 
+    public function setCreatininemie($creatininemie): self
+    {
+        $this->creatininemie = $creatininemie;
+
+        return $this;
+    }
+
+    public function setMarginaleFFR(?string $marginaleFFR): self
+    {
+        $this->marginaleFFR = $marginaleFFR;
+
+        return $this;
+    }
+
     public function getDebitReposSegment(): ?Bullseye
     {
         return $this->debitReposSegment;
@@ -761,5 +765,6 @@ class Paraclinique
 
         return $this;
     }
+
 
 }

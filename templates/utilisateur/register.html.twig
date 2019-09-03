@@ -30,7 +30,7 @@
             </div>
 
             <div class="container-login-form-btn">
-                {{ form_widget(form.validation, {'attr': {'class': 'login-form-btn'} }) }}
+                {{ form_widget(form.save, {'attr': {'class': 'login-form-btn'} }) }}
             </div>
 
             <div class="txt-register">
@@ -50,6 +50,8 @@
     <script src="{{ asset('js/trianglify.min.js') }}"></script>
 
     <script>
+        $('body').css({'overflow': 'hidden'});
+
         var pattern = Trianglify({
             height: window.innerHeight,
             width: window.innerWidth,

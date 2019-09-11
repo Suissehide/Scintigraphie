@@ -13,7 +13,7 @@ class BullseyeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('segment', CollectionType::class, array(
+            ->add('segments', CollectionType::class, array(
                 'entry_type' => SegmentType::class,
                 'entry_options' => array('label' => false),
                 'allow_add' => true,

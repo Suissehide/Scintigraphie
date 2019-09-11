@@ -468,7 +468,7 @@
                     </div>
                 </div>
                 <div class="echo">
-                    {% for segment in form.paraclinique.debitReposSegment.segment %}
+                    {% for segment in form.paraclinique.debitReposSegment.segments %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
@@ -496,7 +496,7 @@
                     </div>
                 </div>
                 <div class="echo">
-                    {% for segment in form.paraclinique.debitRegadenosonSegment.segment %}
+                    {% for segment in form.paraclinique.debitRegadenosonSegment.segments %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
@@ -515,7 +515,7 @@
 
                 <div class="col-label">Repos</div>
                 <div class="echo">
-                    {% for segment in form.paraclinique.analyseReposSegment.segment %}
+                    {% for segment in form.paraclinique.analyseReposSegment.segments %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
@@ -532,7 +532,7 @@
                 <div class="margin-space"></div>
                 <div class="col-label">Sous régadénoson</div>
                 <div class="echo">
-                    {% for segment in form.paraclinique.analyseRegadenosonSegment.segment %}
+                    {% for segment in form.paraclinique.analyseRegadenosonSegment.segments %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
@@ -778,11 +778,10 @@
         /* Cardiovasculaire */
         function tabagisme(val) {
             let p = $('#patient_cardiovasculaire_paquetAnnee').parents('.row');
-            if (! p.is(":visible") && val == 'Actif') 
+            if (!p.is(":visible") && val == 'Actif') 
                 p.toggle('normal');
              else if (p.is(":visible")) 
                 p.toggle('normal');
-            
         }
         tabagisme($('#patient_cardiovasculaire_tabagisme').val());
         $('#patient_cardiovasculaire_tabagisme').on('change', function () {
@@ -791,13 +790,12 @@
 
         function diabete(val) {
             let p = $('#diabete');
-            if (! p.is(":visible") && val == 'Oui') 
+            if (!p.is(":visible") && val == 'Oui') 
                 p.toggle('normal');
-             else if (p.is(":visible")) 
-                p.toggle('normal');
-            
+            else if (p.is(":visible"))
+                p.toggle('normal'); 
         }
-        diabete($('input[type=radio][name="patient[cardiovasculaire][diabete]"]').val());
+        diabete($('input[type=radio][name="patient[cardiovasculaire][diabete]"]:checked').val());
         $('input[type=radio][name="patient[cardiovasculaire][diabete]"]').on('change', function () {
             diabete($(this).val())
         });
@@ -810,7 +808,6 @@
                     d.toggle('fast');
                  else if ($(e).find('.qcm-response input[type=radio]:checked').val() != "Oui" && d.is(":visible")) 
                     d.toggle('fast');
-                
             });
         }
         qcmDate();
@@ -820,13 +817,12 @@
 
         function evenements(val) {
             let p = $('#qcm-date');
-            if (! p.is(":visible") && val == 'Oui') 
+            if (!p.is(":visible") && val == 'Oui') 
                 p.toggle('normal');
              else if (p.is(":visible")) 
                 p.toggle('normal');
-            
         }
-        evenements($('input[type=radio][name="patient[suivi][suivi]"]').val());
+        evenements($('input[type=radio][name="patient[suivi][suivi]"]:checked').val());
         $('input[type=radio][name="patient[suivi][suivi]"]').on('change', function () {
             evenements($(this).val())
         });

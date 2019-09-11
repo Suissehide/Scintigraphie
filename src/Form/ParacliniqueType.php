@@ -173,6 +173,16 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
+            ->add('rythme', ChoiceType::class, array(
+                'label' => 'Rythme cardiaque',
+                'placeholder' => '',
+                'choices' => array(
+                    'Sinusal' => 'Sinusal',
+                    'FA' => 'FA',
+                    'ESV bi ou trigéminées' => 'ESV bi ou trigéminées',
+                ),
+                'required' => false,
+            ))
             ->add('fraction', NumberType::class, array(
                 'label' => 'Fraction d’éjection scintigraphie',
                 'attr' => array(

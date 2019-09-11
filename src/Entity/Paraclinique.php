@@ -231,6 +231,11 @@ class Paraclinique
      */
     private $analyseRegadenosonSegment;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $rythme;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -762,6 +767,18 @@ class Paraclinique
     public function setAnalyseRegadenosonSegment(?Bullseye $analyseRegadenosonSegment): self
     {
         $this->analyseRegadenosonSegment = $analyseRegadenosonSegment;
+
+        return $this;
+    }
+
+    public function getRythme(): ?string
+    {
+        return $this->rythme;
+    }
+
+    public function setRythme(?string $rythme): self
+    {
+        $this->rythme = $rythme;
 
         return $this;
     }

@@ -412,6 +412,48 @@
 
                 <h3 id="scintigraphie">Scintigraphie</h3>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.fcRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.fcMax, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.rythme, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.taRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.taPic, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+
                 <h5>Débits</h5>
                 <div class="col-label">Repos</div>
                 <div class="row">
@@ -502,6 +544,16 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.fraction, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
                 </div>
 
 

@@ -122,7 +122,7 @@ class Paraclinique
     private $coronaireDroiteStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $coronaireDroiteFFR;
 
@@ -132,7 +132,7 @@ class Paraclinique
     private $ivaStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $ivaFFR;
 
@@ -142,7 +142,7 @@ class Paraclinique
     private $circonflexeStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $circonflexeFFR;
 
@@ -152,7 +152,7 @@ class Paraclinique
     private $diagonaleStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $diagonaleFFR;
 
@@ -162,7 +162,7 @@ class Paraclinique
     private $marginaleStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $marginaleFFR;
 
@@ -172,7 +172,7 @@ class Paraclinique
     private $pontageStenose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $pontageFFR;
 
@@ -235,6 +235,66 @@ class Paraclinique
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $rythme;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $coronaireDroiteCMR;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $ivaCMR;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $circonflexeCMR;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $diagonaleCMR;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $marginaleCMR;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $pontageCMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $coronaireDroiteIMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ivaIMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $circonflexeIMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $diagonaleIMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $marginaleIMR;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $pontageIMR;
 
     public function getId(): ?int
     {
@@ -493,12 +553,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getCoronaireDroiteFFR(): ?string
+    public function getCoronaireDroiteFFR()
     {
         return $this->coronaireDroiteFFR;
     }
 
-    public function setCoronaireDroiteFFR(?string $coronaireDroiteFFR): self
+    public function setCoronaireDroiteFFR($coronaireDroiteFFR): self
     {
         $this->coronaireDroiteFFR = $coronaireDroiteFFR;
 
@@ -517,12 +577,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getIvaFFR(): ?string
+    public function getIvaFFR()
     {
         return $this->ivaFFR;
     }
 
-    public function setIvaFFR(?string $ivaFFR): self
+    public function setIvaFFR($ivaFFR): self
     {
         $this->ivaFFR = $ivaFFR;
 
@@ -541,12 +601,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getCirconflexeFFR(): ?string
+    public function getCirconflexeFFR()
     {
         return $this->circonflexeFFR;
     }
 
-    public function setCirconflexeFFR(?string $circonflexeFFR): self
+    public function setCirconflexeFFR($circonflexeFFR): self
     {
         $this->circonflexeFFR = $circonflexeFFR;
 
@@ -565,12 +625,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getDiagonaleFFR(): ?string
+    public function getDiagonaleFFR()
     {
         return $this->diagonaleFFR;
     }
 
-    public function setDiagonaleFFR(?string $diagonaleFFR): self
+    public function setDiagonaleFFR($diagonaleFFR): self
     {
         $this->diagonaleFFR = $diagonaleFFR;
 
@@ -589,12 +649,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getMarginaleFFR(): ?string
+    public function getMarginaleFFR()
     {
         return $this->marginaleFFR;
     }
 
-    public function setMarginalFFR(?string $marginaleFFR): self
+    public function setMarginaleFFR($marginaleFFR): self
     {
         $this->marginaleFFR = $marginaleFFR;
 
@@ -613,12 +673,12 @@ class Paraclinique
         return $this;
     }
 
-    public function getPontageFFR(): ?string
+    public function getPontageFFR()
     {
         return $this->pontageFFR;
     }
 
-    public function setPontageFFR(?string $pontageFFR): self
+    public function setPontageFFR($pontageFFR): self
     {
         $this->pontageFFR = $pontageFFR;
 
@@ -716,13 +776,6 @@ class Paraclinique
         return $this;
     }
 
-    public function setMarginaleFFR(?string $marginaleFFR): self
-    {
-        $this->marginaleFFR = $marginaleFFR;
-
-        return $this;
-    }
-
     public function getDebitReposSegment(): ?Bullseye
     {
         return $this->debitReposSegment;
@@ -783,5 +836,147 @@ class Paraclinique
         return $this;
     }
 
+    public function getCoronaireDroiteCMR(): ?string
+    {
+        return $this->coronaireDroiteCMR;
+    }
 
+    public function setCoronaireDroiteCMR(?string $coronaireDroiteCMR): self
+    {
+        $this->coronaireDroiteCMR = $coronaireDroiteCMR;
+
+        return $this;
+    }
+
+    public function getIvaCMR(): ?string
+    {
+        return $this->ivaCMR;
+    }
+
+    public function setIvaCMR(?string $ivaCMR): self
+    {
+        $this->ivaCMR = $ivaCMR;
+
+        return $this;
+    }
+
+    public function getCirconflexeCMR(): ?string
+    {
+        return $this->circonflexeCMR;
+    }
+
+    public function setCirconflexeCMR(?string $circonflexeCMR): self
+    {
+        $this->circonflexeCMR = $circonflexeCMR;
+
+        return $this;
+    }
+
+    public function getDiagonaleCMR(): ?string
+    {
+        return $this->diagonaleCMR;
+    }
+
+    public function setDiagonaleCMR(?string $diagonaleCMR): self
+    {
+        $this->diagonaleCMR = $diagonaleCMR;
+
+        return $this;
+    }
+
+    public function getMarginaleCMR(): ?string
+    {
+        return $this->marginaleCMR;
+    }
+
+    public function setMarginaleCMR(?string $marginaleCMR): self
+    {
+        $this->marginaleCMR = $marginaleCMR;
+
+        return $this;
+    }
+
+    public function getPontageCMR(): ?string
+    {
+        return $this->pontageCMR;
+    }
+
+    public function setPontageCMR(?string $pontageCMR): self
+    {
+        $this->pontageCMR = $pontageCMR;
+
+        return $this;
+    }
+
+    public function getCoronaireDroiteIMR(): ?int
+    {
+        return $this->coronaireDroiteIMR;
+    }
+
+    public function setCoronaireDroiteIMR(?int $coronaireDroiteIMR): self
+    {
+        $this->coronaireDroiteIMR = $coronaireDroiteIMR;
+
+        return $this;
+    }
+
+    public function getIvaIMR(): ?int
+    {
+        return $this->ivaIMR;
+    }
+
+    public function setIvaIMR(?int $ivaIMR): self
+    {
+        $this->ivaIMR = $ivaIMR;
+
+        return $this;
+    }
+
+    public function getCirconflexeIMR(): ?int
+    {
+        return $this->circonflexeIMR;
+    }
+
+    public function setCirconflexeIMR(?int $circonflexeIMR): self
+    {
+        $this->circonflexeIMR = $circonflexeIMR;
+
+        return $this;
+    }
+
+    public function getDiagonaleIMR(): ?int
+    {
+        return $this->diagonaleIMR;
+    }
+
+    public function setDiagonaleIMR(?int $diagonaleIMR): self
+    {
+        $this->diagonaleIMR = $diagonaleIMR;
+
+        return $this;
+    }
+
+    public function getMarginaleIMR(): ?int
+    {
+        return $this->marginaleIMR;
+    }
+
+    public function setMarginaleIMR(?int $marginaleIMR): self
+    {
+        $this->marginaleIMR = $marginaleIMR;
+
+        return $this;
+    }
+
+    public function getPontageIMR(): ?int
+    {
+        return $this->pontageIMR;
+    }
+
+    public function setPontageIMR(?int $pontageIMR): self
+    {
+        $this->pontageIMR = $pontageIMR;
+
+        return $this;
+    }
 }

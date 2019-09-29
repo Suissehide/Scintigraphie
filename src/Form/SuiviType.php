@@ -23,6 +23,7 @@ class SuiviType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('evenements', PackType::class, array())
         ;

@@ -120,6 +120,15 @@ td .btn-default {
     flex: 1;
 }
 
+.table-5 {
+    display: flex;
+    padding: 0 10px;
+}
+
+.table-5 > div {
+    flex: 20%;
+}
+
 /* ========= PAGINATION ========= */
 
 .pagination li a {
@@ -538,8 +547,17 @@ main h3 {
 }
 
 .qcm-question {
-    width: 65%;
+    flex: 65%;
+    overflow-y: auto;
+    height: 58px;
+    font-family: Ubuntu-Bold;
+    color: #1a535c;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 5px;
 }
+
 
 .qcm-question input[readonly],
 .qcm-question input[readonly]:focus,
@@ -779,7 +797,8 @@ main h3 {
 
 .segment .input {
     text-align: center;
-    padding: 0 10px 0 20px;
+    padding: 0 20px;
+    /* padding: 0 10px 0 20px; */
 }
 
 .segment .unity {

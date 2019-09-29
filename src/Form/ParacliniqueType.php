@@ -22,6 +22,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '%',
                     'data-min' => '3',
                     'data-max' => '15',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -31,6 +32,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'g/l',
                     'data-min' => '0.3',
                     'data-max' => '2.5',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))
@@ -40,6 +42,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'g/l',
                     'data-min' => '0.3',
                     'data-max' => '1.5',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))
@@ -49,6 +52,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'g/l',
                     'data-min' => '0.4',
                     'data-max' => '10',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))
@@ -58,6 +62,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'µmol/l',
                     'data-min' => '30',
                     'data-max' => '300',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))
@@ -67,6 +72,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'ml/min',
                     'data-min' => '20',
                     'data-max' => '150',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))
@@ -96,6 +102,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '',
                     'data-min' => '0.2',
                     'data-max' => '1.5',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -105,6 +112,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '',
                     'data-min' => '0.2',
                     'data-max' => '1.5',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -114,6 +122,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '',
                     'data-min' => '0.2',
                     'data-max' => '1.5',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -123,6 +132,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '',
                     'data-min' => '0.2',
                     'data-max' => '1.5',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -132,6 +142,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'volt',
                     'data-min' => '3',
                     'data-max' => '50',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -143,6 +154,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'battements par min',
                     'data-min' => '45',
                     'data-max' => '150',
+                    'step' => '1',
                 ),
                 'required' => false,
             ))
@@ -152,6 +164,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'battements par min',
                     'data-min' => '72',
                     'data-max' => '220',
+                    'step' => '1',
                 ),
                 'required' => false,
             ))
@@ -161,6 +174,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'mmHg',
                     'data-min' => '80',
                     'data-max' => '200',
+                    'step' => '1',
                 ),
                 'required' => false,
             ))
@@ -170,6 +184,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'mmHg',
                     'data-min' => '80',
                     'data-max' => '200',
+                    'step' => '1',
                 ),
                 'required' => false,
             ))
@@ -189,6 +204,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => '%',
                     'data-min' => '25',
                     'data-max' => '70',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -198,6 +214,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'ml/min/g',
                     'data-min' => '0.5',
                     'data-max' => '4',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -207,6 +224,7 @@ class ParacliniqueType extends AbstractType
                     'unity' => 'ml/min/g',
                     'data-min' => '0.5',
                     'data-max' => '4',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -229,13 +247,13 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('coronaireDroiteFFR', ChoiceType::class, array(
+            ->add('coronaireDroiteFFR', NumberType::class, array(
                 'label' => 'Coronaire droite',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -250,13 +268,13 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('ivaFFR', ChoiceType::class, array(
+            ->add('ivaFFR', NumberType::class, array(
                 'label' => 'IVA',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -271,13 +289,13 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('circonflexeFFR', ChoiceType::class, array(
+            ->add('circonflexeFFR', NumberType::class, array(
                 'label' => 'Circonflexe',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -292,13 +310,13 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('diagonaleFFR', ChoiceType::class, array(
+            ->add('diagonaleFFR', NumberType::class, array(
                 'label' => 'Diagonale',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -313,13 +331,13 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('marginaleFFR', ChoiceType::class, array(
+            ->add('marginaleFFR', NumberType::class, array(
                 'label' => 'Marginale',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
@@ -334,17 +352,132 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('pontageFFR', ChoiceType::class, array(
+            ->add('pontageFFR', NumberType::class, array(
                 'label' => 'Pontage',
-                'placeholder' => '',
-                'choices' => array(
-                    'FFR < 0.7' => 'FFR < 0.7',
-                    'FFR > 0.7' => 'FFR > 0.7',
-                    'FFR pas de donnée' => 'FFR pas de donnée',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '0',
+                    'data-max' => '1.2',
+                    'step' => '0.1',
                 ),
                 'required' => false,
             ))
 
+            ->add('coronaireDroiteCMR', NumberType::class, array(
+                'label' => 'Coronaire',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaCMR', NumberType::class, array(
+                'label' => 'IVA',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('circonflexeCMR', NumberType::class, array(
+                'label' => 'Circonflexe',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('diagonaleCMR', NumberType::class, array(
+                'label' => 'Diagonale',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('marginaleCMR', NumberType::class, array(
+                'label' => 'Marginale',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('pontageCMR', NumberType::class, array(
+                'label' => 'Pontage',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '1',
+                    'data-max' => '10',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+
+            ->add('coronaireDroiteIMR', IntegerType::class, array(
+                'label' => 'Coronaire',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaIMR', IntegerType::class, array(
+                'label' => 'IVA',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('circonflexeIMR', IntegerType::class, array(
+                'label' => 'Circonflexe',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('diagonaleIMR', IntegerType::class, array(
+                'label' => 'Diagonale',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('marginaleIMR', IntegerType::class, array(
+                'label' => 'Marginale',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('pontageIMR', IntegerType::class, array(
+                'label' => 'Pontage',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
 
             ->add('iec', ChoiceType::class, array(
                 'label' => 'IEC/Sartan',
@@ -356,6 +489,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('betaBloquant', ChoiceType::class, array(
                 'label' => 'Beta bloquant',
@@ -367,6 +501,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('antiAgregant', ChoiceType::class, array(
                 'label' => 'Anti agregant',
@@ -378,6 +513,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('antiAldosterone', ChoiceType::class, array(
                 'label' => 'Anti Aldosterone',
@@ -389,6 +525,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('antiDiabetique', ChoiceType::class, array(
                 'label' => 'Anti diabetique oral ',
@@ -400,6 +537,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('insuline', ChoiceType::class, array(
                 'label' => 'Insuline',
@@ -411,6 +549,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('diuretique', ChoiceType::class, array(
                 'label' => 'Diuretique',
@@ -422,6 +561,7 @@ class ParacliniqueType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
         ;
     }

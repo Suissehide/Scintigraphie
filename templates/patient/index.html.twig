@@ -36,7 +36,7 @@
                     <a href="{{ path('index_patient') }}" class="form-btn btn-default">
                         <i aria-hidden="true" class="fa fa-arrow-left"></i>Retour</a>
                     <button class="form-btn js-save" type="button">
-                        <i aria-hidden="true" class="fa fa-save"></i>Enregistrer</button>
+                        <i aria-hidden="true" class="fa fa-save"></i>Sauvegarder</button>
                     {{ include('patient/_delete_form.html.twig') }}
                 </div>
             </div>
@@ -252,14 +252,14 @@
 
                 <h3 id="antecedents">Antécédents cardiovasculaires personnels</h3>
                 <div class="qcm">
-                    {% for pack in form.cardiovasculaire.antecedents.qcm %}
+                    {% for qcm in form.cardiovasculaire.antecedents.qcm %}
                         <div class="qcm-row">
                             <div class="qcm-question">
-                                {{ form_widget(pack.question, {'attr': {'class': 'input'} }) }}
+                                {{ qcm.vars.value.question }}
                             </div>
                             <div class="qcm-response">
                                 <div class="wrap-input">
-                                    {{ form_widget(pack.reponse, {'attr': {'class': 'input radio-row'} }) }}
+                                    {{ form_widget(qcm.reponse, {'attr': {'class': 'input radio-row'} }) }}
                                 </div>
                             </div>
                         </div>
@@ -279,7 +279,7 @@
 
                         <div class="qcm-row">
                             <div class="qcm-question">
-                                {{ form_widget(qcm.question, {'attr': {'class': 'input'} }) }}
+                                {{ qcm.vars.value.question }}
                             </div>
                             <div class="qcm-response">
                                 <div class="wrap-input">
@@ -469,12 +469,12 @@
                 </div>
                 <div class="echo">
                     {% for segment in form.paraclinique.debitReposSegment.segments %}
-                    {% set counter = ( counter | default(0) ) + 1 %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
-                                        'useStyle': true,
+                                        'useStyle': false,
                                     })
                                 }}
                             </div>
@@ -497,12 +497,12 @@
                 </div>
                 <div class="echo">
                     {% for segment in form.paraclinique.debitRegadenosonSegment.segments %}
-                    {% set counter = ( counter | default(0) ) + 1 %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
                         <div class="segment">
                             <div class="wrap-input">
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
-                                        'useStyle': true,
+                                        'useStyle': false,
                                     })
                                 }}
                             </div>
@@ -516,12 +516,18 @@
                 <div class="col-label">Repos</div>
                 <div class="echo">
                     {% for segment in form.paraclinique.analyseReposSegment.segments %}
-                    {% set counter = ( counter | default(0) ) + 1 %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        {% if segment.vars.value.seg is empty%}
+                            {% set var = 1 %}
+                        {% else %}
+                            {% set var = segment.vars.value.seg %}
+                        {% endif %}
                         <div class="segment">
                             <div class="wrap-input">
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
-                                        'useStyle': true,
+                                        'useStyle': false,
+                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
                             </div>
@@ -533,12 +539,18 @@
                 <div class="col-label">Sous régadénoson</div>
                 <div class="echo">
                     {% for segment in form.paraclinique.analyseRegadenosonSegment.segments %}
-                    {% set counter = ( counter | default(0) ) + 1 %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        {% if segment.vars.value.seg is empty%}
+                            {% set var = 1 %}
+                        {% else %}
+                            {% set var = segment.vars.value.seg %}
+                        {% endif %}
                         <div class="segment">
                             <div class="wrap-input">
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
-                                        'useStyle': true,
+                                        'useStyle': false,
+                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
                             </div>
@@ -560,84 +572,169 @@
                 <div class="margin-space"></div>
                 <h5>Coronarographie (sténose >50%)</h5>
                 {# TODO: bulle info -> "ne remplir que si coronarographie de moins de 1 an" #}
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5 row-label">
+                <div class="row table-5">
+                    <div></div>
+                    <div class="row-label">
                         Sténose
                     </div>
-                    <div class="col-md-5 row-label">
+                    <div class="row-label">
                         FFR
                     </div>
+                    <div class="row-label">
+                        CMR
+                    </div>
+                    <div class="row-label">
+                        IMR
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         Coronaire droite
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.coronaireDroiteStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.coronaireDroiteFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.coronaireDroiteFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
+
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.coronaireDroiteCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.coronaireDroiteIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         IVA
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.ivaStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.ivaFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.ivaFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.ivaCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.ivaIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         Circonflexe
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.circonflexeStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.circonflexeFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.circonflexeFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.circonflexeCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.circonflexeIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         Diagonale
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.diagonaleStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.diagonaleFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.diagonaleFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.diagonaleCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.diagonaleIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         Marginale
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.marginaleStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.marginaleFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.marginaleFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.marginaleCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.marginaleIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-label">
+                <div class="row table-5">
+                    <div class="col-label">
                         Pontage
                     </div>
-                    <div class="col-md-5">
+                    <div class="wrap-input">
                         {{ form_widget(form.paraclinique.pontageStenose, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
                     </div>
-                    <div class="col-md-5">
-                        {{ form_widget(form.paraclinique.pontageFFR, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.pontageFFR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.pontageCMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="wrap-input">
+                        <div class="form-unity">
+                            {{ form_widget(form.paraclinique.pontageIMR, {'attr': {'class': 'input js-unity', 'autocomplete' : 'off'} }) }}
+                        </div>
                     </div>
                 </div>
 
                 <div class="margin-space"></div>
-                <h5>Traitement <button class="tool" data-tip="Disponible sur compte-rendu scintigraphie"><i class="fa fa-info-circle"></i></button></h5>
+                <h5>Traitement
+                    <button class="tool" data-tip="Disponible sur compte-rendu scintigraphie">
+                        <i class="fa fa-info-circle"></i>
+                    </button>
+                </h5>
                 <div class="row">
                     <div class="col-md-6">
                         {{ form_row(form.paraclinique.iec, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
@@ -687,22 +784,24 @@
                 <div class="hdn" id="qcm-date">
                     <h5>Événements</h5>
                     <div class="qcm qcm__date">
-                        {% for pack in form.suivi.evenements.qcmDate %}
+                        {% for qcm in form.suivi.evenements.qcmDate %}
                             <div class="qcm-row">
                                 <div class="qcm-question">
-                                    {{ form_widget(pack.question, {'attr': {'class': 'input'} }) }}
+                                    {{ qcm.vars.value.question }}
                                 </div>
                                 <div class="qcm-response">
-                                    {{ form_widget(pack.reponse, {'attr': {'class': 'input radio-row'} }) }}
+                                    {{ form_widget(qcm.reponse, {'attr': {'class': 'input radio-row'} }) }}
                                 </div>
                                 <div class="qcm-date hdn">
-                                    {{ form_widget(pack.date, {'attr': {'class': 'input js-datepicker'} }) }}
+                                    {{ form_widget(qcm.date, {'attr': {'class': 'input js-datepicker'} }) }}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             </section>
+
+            {{ form_row(form.save, {'attr': {'class': 'form-btn btn-save', 'autocomplete' : 'off'} }) }}
 
             {{ form_row(form._token) }}
             {{ form_end(form, {'render_rest' : false}) }}
@@ -736,7 +835,8 @@
         });
 
         $('.js-save').on('click', function () {
-            $('form[name="patient"]').submit();
+            $('#patient_save').trigger('click');
+            // $('form[name="patient"]').submit();
         })
 
         /* Age */
@@ -749,9 +849,13 @@
             if (isNaN(age)) 
                 return -1;
             
+
+
             if (m < 0 || (m === 0 && today.getDate() < date.getDate())) 
                 age--;
             
+
+
             return age;
         }
         $('#patient_dateNaissance').on('change', function () {
@@ -778,10 +882,13 @@
         /* Cardiovasculaire */
         function tabagisme(val) {
             let p = $('#patient_cardiovasculaire_paquetAnnee').parents('.row');
-            if (!p.is(":visible") && val == 'Actif') 
+            if (! p.is(":visible") && val == 'Actif') 
                 p.toggle('normal');
              else if (p.is(":visible")) 
                 p.toggle('normal');
+            
+
+
         }
         tabagisme($('#patient_cardiovasculaire_tabagisme').val());
         $('#patient_cardiovasculaire_tabagisme').on('change', function () {
@@ -790,10 +897,13 @@
 
         function diabete(val) {
             let p = $('#diabete');
-            if (!p.is(":visible") && val == 'Oui') 
+            if (! p.is(":visible") && val == 'Oui') 
                 p.toggle('normal');
-            else if (p.is(":visible"))
-                p.toggle('normal'); 
+             else if (p.is(":visible")) 
+                p.toggle('normal');
+            
+
+
         }
         diabete($('input[type=radio][name="patient[cardiovasculaire][diabete]"]:checked').val());
         $('input[type=radio][name="patient[cardiovasculaire][diabete]"]').on('change', function () {
@@ -808,6 +918,9 @@
                     d.toggle('fast');
                  else if ($(e).find('.qcm-response input[type=radio]:checked').val() != "Oui" && d.is(":visible")) 
                     d.toggle('fast');
+                
+
+
             });
         }
         qcmDate();
@@ -817,21 +930,26 @@
 
         function evenements(val) {
             let p = $('#qcm-date');
-            if (!p.is(":visible") && val == 'Oui') 
+            if (! p.is(":visible") && val == 'Oui') 
                 p.toggle('normal');
              else if (p.is(":visible")) 
                 p.toggle('normal');
+            
+
+
         }
         evenements($('input[type=radio][name="patient[suivi][suivi]"]:checked').val());
         $('input[type=radio][name="patient[suivi][suivi]"]').on('change', function () {
             evenements($(this).val())
         });
 
-        /* Erreur Integer */
+        /* Erreur number max/min */
         function createError(e) {
             if ($(e).parent().hasClass('form-error')) 
                 return;
             
+
+
             let msg = "<div class='error-msg'><i>ERREUR : </i>La valeur devrait être comprise entre " + $(e).attr('data-min') + " et " + $(e).attr('data-max') + " " + $(e).attr('unity') + "</div>"
             let err = "<span class='fa fa-info-circle err'></span>";
             $(e).parent().addClass('form-error');
@@ -844,14 +962,19 @@
             // $(e).parent().find('.err').remove();
         }
         function findError(e) {
-            if ($(e).attr('data-max') == '' || $(e).attr('data-min') == '')
+            if ($(e).attr('data-max') == '' || $(e).attr('data-min') == '') 
                 return;
+            
+
+
             let val = parseFloat($(e).val());
             if (val > $(e).attr('data-max') || val < $(e).attr('data-min')) 
                 createError(e);
              else 
                 deleteError(e);
             
+
+
         }
         $('form[name="patient"] input.js-unity').on('change', function () {
             findError(this);
@@ -875,7 +998,9 @@
         /* Close */
         $('.toc').on('click', '.toc-close', function () {
             $('.toc-open, .toc-close').toggle('fast');
-            $('.toc ul').animate({ width: "toggle", }, { duration: 500, }).promise().then(function() {
+            $('.toc ul').animate({
+                width: "toggle"
+            }, {duration: 500}).promise().then(function () {
                 $('main').addClass('main-close');
             });
         })
@@ -883,7 +1008,9 @@
         $('.toc').on('click', '.toc-open', function () {
             $('.toc-open, .toc-close').toggle('fast');
             $('main').removeClass('main-close');
-            $('.toc ul').animate({ width: "toggle", }, { duration: 500, });
+            $('.toc ul').animate({
+                width: "toggle"
+            }, {duration: 500});
         })
     </script>
 

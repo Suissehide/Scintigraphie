@@ -70,7 +70,8 @@ class PatientType extends AbstractType
                 'label' => 'Suivi'
             ))
 
-            ->add('save', SubmitType::class, array('label' => 'Ajouter'))
+            ->add('add', SubmitType::class, array('label' => 'Ajouter'))
+            ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
         ;
     }
 

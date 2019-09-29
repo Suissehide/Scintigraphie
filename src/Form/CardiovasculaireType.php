@@ -71,6 +71,7 @@ class CardiovasculaireType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('poids', IntegerType::class, array(
                 'label' => 'Poids',
@@ -109,6 +110,7 @@ class CardiovasculaireType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('dateDiabete', DateType::class, array(
                 'label' => 'Depuis',
@@ -129,6 +131,7 @@ class CardiovasculaireType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'required' => false,
             ))
             ->add('microalbuminurie', ChoiceType::class, array(
                 'label' => 'Microalbuminurie connue',
@@ -141,6 +144,7 @@ class CardiovasculaireType extends AbstractType
                     'Non' => 'Non',
                     'Info non disponible' => 'Info non disponible',
                 ),
+                'required' => false,
             ))
             ->add('neuropathie', ChoiceType::class, array(
                 'label' => 'Neuropathie',
@@ -153,6 +157,7 @@ class CardiovasculaireType extends AbstractType
                     'Non' => 'Non',
                     'Info non disponible' => 'Info non disponible',
                 ),
+                'required' => false,
             ))
             ->add('antecedents', PackType::class, array())
 

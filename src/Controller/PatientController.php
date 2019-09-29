@@ -33,7 +33,7 @@ class PatientController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->get('save')->isClicked()) {
+            if ($form->get('add')->isClicked()) {
                 $patient = $form->getData();
 
                 $this->cardiovasculaire_create($patient);

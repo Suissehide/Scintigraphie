@@ -33,57 +33,59 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal" role="dialog">
-        <div
-            class="modal-dialog">
+    {% if is_granted('ROLE_ADMIN') %}
+        <!-- Modal -->
+        <div class="modal fade" id="modal" role="dialog">
+            <div
+                class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="close" data-dismiss="modal" type="button">&times;</button>
-                    <h4 class="modal-title">
-                        Modifier un utilisateur
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <form class="container-form">
-                        <div class="wrap-input">
-                            <label class="required" for="utilisateur_email">Email</label>
-                            <input autocomplete="off" class="input" id="utilisateur_email" name="utilisateur[email]" readonly="readonly" required="required" type="text">
-                        </div>
-                        <div class="wrap-input">
-                            <label class="required" for="utilisateur_nom">Nom</label>
-                            <input autocomplete="off" class="input" id="utilisateur_nom" name="utilisateur[nom]" readonly="readonly" required="required" type="text">
-                        </div>
-                        <div class="wrap-input">
-                            <label class="required" for="utilisateur_prenom">Prénom</label>
-                            <input autocomplete="off" class="input" id="utilisateur_prenom" name="utilisateur[prenom]" readonly="readonly" required="required" type="text">
-                        </div>
-                        <div class="wrap-input">
-                            <label for="utilisateur_roles">Roles</label>
-                            <select class="input" id="utilisateur_roles" name="utilisateur[roles]">
-                                <option value="Invité">Invité</option>
-                                <option value="Utilisateur">Utilisateur</option>
-                                <option value="Administrateur">Administrateur</option>
-                            </select>
-                            <span class="focus-input"></span>
-                        </div>
-                        <div class="form-btn-container">
-                            <button class="form-btn btn-default" data-dismiss="modal">
-                                <span class="fa fa-times"></span>
-                                Annuler
-                            </button>
-                            <button class="form-btn" data-dismiss="modal" id="edit">
-                                <span class="fa fa-pencil-alt"></span>
-                                Modifier
-                            </button>
-                        </div>
-                    </form>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">&times;</button>
+                        <h4 class="modal-title">
+                            Modifier un utilisateur
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container-form">
+                            <div class="wrap-input">
+                                <label class="required" for="utilisateur_email">Email</label>
+                                <input autocomplete="off" class="input" id="utilisateur_email" name="utilisateur[email]" readonly="readonly" required="required" type="text">
+                            </div>
+                            <div class="wrap-input">
+                                <label class="required" for="utilisateur_nom">Nom</label>
+                                <input autocomplete="off" class="input" id="utilisateur_nom" name="utilisateur[nom]" readonly="readonly" required="required" type="text">
+                            </div>
+                            <div class="wrap-input">
+                                <label class="required" for="utilisateur_prenom">Prénom</label>
+                                <input autocomplete="off" class="input" id="utilisateur_prenom" name="utilisateur[prenom]" readonly="readonly" required="required" type="text">
+                            </div>
+                            <div class="wrap-input">
+                                <label for="utilisateur_roles">Roles</label>
+                                <select class="input" id="utilisateur_roles" name="utilisateur[roles]">
+                                    <option value="Invité">Invité</option>
+                                    <option value="Utilisateur">Utilisateur</option>
+                                    <option value="Administrateur">Administrateur</option>
+                                </select>
+                                <span class="focus-input"></span>
+                            </div>
+                            <div class="form-btn-container">
+                                <button class="form-btn btn-default" data-dismiss="modal">
+                                    <span class="fa fa-times"></span>
+                                    Annuler
+                                </button>
+                                <button class="form-btn" data-dismiss="modal" id="edit">
+                                    <span class="fa fa-pencil-alt"></span>
+                                    Modifier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 
 {% endblock %}
 

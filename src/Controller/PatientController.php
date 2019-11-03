@@ -81,6 +81,19 @@ class PatientController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $suivi = new Suivi();
 
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $suivi->setDebitRegadenosonSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $suivi->setDebitReposSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $suivi->setAnalyseRegadenosonSegment($bullseyes);
+        $bullseyes = new Bullseye();
+        for ($i = 0; $i < 17; $i++) { $bullseyes->addSegment(new Segment()); }
+        $suivi->setAnalyseReposSegment($bullseyes);
+
         $pack = new Pack();
 
         $qcm = new QcmDate();

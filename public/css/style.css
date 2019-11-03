@@ -952,6 +952,9 @@ input[type="radio"]:checked+label span {
     font-size: 12px;
 }
 
+h3 .tool, h3 .tool:hover {
+    font-size: 16px;
+}
 
 /*== common styles for both parts of tool tip ==*/
 .tool::before,

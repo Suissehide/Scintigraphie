@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ParacliniqueType extends AbstractType
 {
@@ -147,6 +147,17 @@ class ParacliniqueType extends AbstractType
                 'required' => false,
             ))
 
+            // Scintigraphie
+
+            ->add('dateScintigraphie', DateType::class, array(
+                'label' => 'Date de la scintigraphie',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
+                'required' => false,
+            ))
 
             ->add('fcRepos', IntegerType::class, array(
                 'label' => 'FC de repos',
@@ -198,8 +209,18 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
-            ->add('fraction', NumberType::class, array(
-                'label' => 'Fraction d’éjection scintigraphie',
+            ->add('fractionRepos', NumberType::class, array(
+                'label' => 'Fraction d’éjection au repos',
+                'attr' => array(
+                    'unity' => '%',
+                    'data-min' => '25',
+                    'data-max' => '70',
+                    'step' => '0.1',
+                ),
+                'required' => false,
+            ))
+            ->add('fractionEffort', NumberType::class, array(
+                'label' => 'Fraction d’éjection sous régadénoson',
                 'attr' => array(
                     'unity' => '%',
                     'data-min' => '25',
@@ -229,12 +250,22 @@ class ParacliniqueType extends AbstractType
                 'required' => false,
             ))
 
-
             ->add('debitReposSegment', BullseyeType::class, array())
             ->add('debitRegadenosonSegment', BullseyeType::class, array())
             ->add('analyseReposSegment', BullseyeType::class, array())
             ->add('analyseRegadenosonSegment', BullseyeType::class, array())
 
+            // Coronarographie
+
+            ->add('dateCoronarographie', DateType::class, array(
+                'label' => 'Date de la coronarographie',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
+                'required' => false,
+            ))
 
             ->add('coronaireDroiteStenose', ChoiceType::class, array(
                 'label' => 'Coronaire droite',
@@ -553,6 +584,41 @@ class ParacliniqueType extends AbstractType
             ))
             ->add('diuretique', ChoiceType::class, array(
                 'label' => 'Diuretique',
+                'required' => 'true',
+                'expanded' => true,
+                'multiple' => false,
+                'placeholder' => false,
+                'choices' => array(
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+                ),
+                'required' => false,
+            ))
+
+            //IRM cérébrale
+
+            ->add('date', DateType::class, array(
+                'label' => 'Date',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array(
+                    'placeholder' => 'dd/mm/yyyy',
+                ),
+                'required' => false,
+            ))
+            ->add('fasekas', ChoiceType::class, array(
+                'label' => 'Fasekas',
+                'placeholder' => '',
+                'choices' => array(
+                    'Stade 1' => 'Stade 1',
+                    'Stade 2' => 'Stade 2',
+                    'Stade 3' => 'Stade 3',
+                    'Stade 4' => 'Stade 4',
+                ),
+                'required' => false,
+            ))
+            ->add('avc', ChoiceType::class, array(
+                'label' => 'AVC',
                 'required' => 'true',
                 'expanded' => true,
                 'multiple' => false,

@@ -82,6 +82,11 @@ class Paraclinique
     private $neuroesthesiometrie;
 
     /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateScintigraphie;
+
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $fcRepos;
@@ -104,17 +109,22 @@ class Paraclinique
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $fraction;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     */
     private $debitReposGlobal;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $debitRegadenosonGlobal;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $fractionRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $fractionEffort;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -295,6 +305,26 @@ class Paraclinique
      * @ORM\Column(type="integer", nullable=true)
      */
     private $pontageIMR;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateCoronarographie;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fasekas;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $avc;
 
     public function getId(): ?int
     {
@@ -501,18 +531,6 @@ class Paraclinique
     public function setTaPic($taPic): self
     {
         $this->taPic = $taPic;
-
-        return $this;
-    }
-
-    public function getFraction()
-    {
-        return $this->fraction;
-    }
-
-    public function setFraction($fraction): self
-    {
-        $this->fraction = $fraction;
 
         return $this;
     }
@@ -976,6 +994,90 @@ class Paraclinique
     public function setPontageIMR(?int $pontageIMR): self
     {
         $this->pontageIMR = $pontageIMR;
+
+        return $this;
+    }
+
+    public function getDateScintigraphie(): ?\DateTimeInterface
+    {
+        return $this->dateScintigraphie;
+    }
+
+    public function setDateScintigraphie(?\DateTimeInterface $dateScintigraphie): self
+    {
+        $this->dateScintigraphie = $dateScintigraphie;
+
+        return $this;
+    }
+
+    public function getDateCoronarographie(): ?\DateTimeInterface
+    {
+        return $this->dateCoronarographie;
+    }
+
+    public function setDateCoronarographie(?\DateTimeInterface $dateCoronarographie): self
+    {
+        $this->dateCoronarographie = $dateCoronarographie;
+
+        return $this;
+    }
+
+    public function getFractionRepos(): ?string
+    {
+        return $this->fractionRepos;
+    }
+
+    public function setFractionRepos(?string $fractionRepos): self
+    {
+        $this->fractionRepos = $fractionRepos;
+
+        return $this;
+    }
+
+    public function getFractionEffort(): ?string
+    {
+        return $this->fractionEffort;
+    }
+
+    public function setFractionEffort(?string $fractionEffort): self
+    {
+        $this->fractionEffort = $fractionEffort;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getFasekas(): ?string
+    {
+        return $this->fasekas;
+    }
+
+    public function setFasekas(?string $fasekas): self
+    {
+        $this->fasekas = $fasekas;
+
+        return $this;
+    }
+
+    public function getAvc(): ?string
+    {
+        return $this->avc;
+    }
+
+    public function setAvc(?string $avc): self
+    {
+        $this->avc = $avc;
 
         return $this;
     }

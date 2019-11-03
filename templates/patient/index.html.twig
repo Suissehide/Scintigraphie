@@ -76,12 +76,16 @@
                         <li><a href="#doppler">Ultrasons doppler</a></li>
                         <li><a href="#examens">Examens sensoriels</a></li>
                         <li><a href="#scintigraphie">Scintigraphie</a></li>
+                        <li><a href="#coronarographie">Coronarographie</a></li>
+                        <li><a href="#traitement">Traitement</a></li>
+                        <li><a href="#irm">IRM cérébrale</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#suivi">Suivi</a>
                     <ul>
                         <li><a href="#evenement">Événement(s) clinique(s)/biologique(s) indésirable(s) survenu(s) depuis l’inclusion</a></li>
+                        <li><a href="#post">Scintigraphie post-coronarographie</a></li>
                     </ul>
                 </li>
             </ul>
@@ -414,6 +418,12 @@
 
                 <div class="row">
                     <div class="col-md-6">
+                        {{ form_row(form.paraclinique.dateScintigraphie, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
                         {{ form_row(form.paraclinique.fcRepos, {
                                 'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
                                 'useStyle': true,
@@ -455,7 +465,7 @@
                 </div>
 
                 <h5>Débits</h5>
-                <div class="col-label">Repos</div>
+                <div class="col-label">Au repos</div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input">
@@ -513,7 +523,7 @@
                 <div class="margin-space"></div>
                 <h5>Analyse visuelle perfusion de repos</h5>
 
-                <div class="col-label">Repos</div>
+                <div class="col-label">Au repos</div>
                 <div class="echo">
                     {% for segment in form.paraclinique.analyseReposSegment.segments %}
                         {% set counter = ( counter | default(0) ) + 1 %}
@@ -533,6 +543,16 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.fractionRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
                 </div>
 
                 <div class="margin-space"></div>
@@ -560,7 +580,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {{ form_row(form.paraclinique.fraction, {
+                        {{ form_row(form.paraclinique.fractionEffort, {
                                 'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
                                 'useStyle': true,
                             })
@@ -570,8 +590,15 @@
 
 
                 <div class="margin-space"></div>
-                <h5>Coronarographie (sténose >50%)</h5>
+                <h3 id="coronarographie">Coronarographie (sténose >50%)</h3>
                 {# TODO: bulle info -> "ne remplir que si coronarographie de moins de 1 an" #}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.paraclinique.dateCoronarographie, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+
                 <div class="row table-5">
                     <div></div>
                     <div class="row-label">
@@ -730,11 +757,11 @@
                 </div>
 
                 <div class="margin-space"></div>
-                <h5>Traitement
+                <h3 id="traitement">Traitement
                     <button class="tool" data-tip="Disponible sur compte-rendu scintigraphie">
                         <i class="fa fa-info-circle"></i>
                     </button>
-                </h5>
+                </h3>
                 <div class="row">
                     <div class="col-md-6">
                         {{ form_row(form.paraclinique.iec, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
@@ -770,6 +797,26 @@
                         {{ form_row(form.paraclinique.diuretique, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
                     </div>
                 </div>
+
+                <div class="margin-space"></div>
+                <h3 id="irm">IRM cérébrale</h3>
+                <div class="form-space">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.paraclinique.date, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.paraclinique.fasekas, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.paraclinique.avc, {'attr': {'class': 'input radio-row', 'autocomplete' : 'off'} }) }}
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="slide" id="tab-suivi">
@@ -799,6 +846,181 @@
                         {% endfor %}
                     </div>
                 </div>
+
+                <div class="margin-space"></div>
+                <h3 id="post">Scintigraphie post-coronarographie</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.dateScintigraphie, {'attr': {'class': 'input js-datepicker', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.fcRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.fcMax, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.rythme, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.taRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.taPic, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+
+                <h5>Débits</h5>
+                <div class="col-label">Au repos</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input">
+                            {{ form_widget(form.suivi.debitReposGlobal, {
+                                    'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                    'useStyle': true,
+                                })
+                            }}
+                        </div>
+                    </div>
+                </div>
+                <div class="echo">
+                    {% for segment in form.suivi.debitReposSegment.segments %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        <div class="segment">
+                            <div class="wrap-input">
+                                {{ form_widget(segment.seg, {
+                                        'attr': {'class': 'input js-unity', 'placeholder': counter},
+                                        'useStyle': false,
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="margin-space"></div>
+                <div class="col-label">Sous régadénoson</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input">
+                            {{ form_widget(form.suivi.debitRegadenosonGlobal, {
+                                    'attr': {'class': 'input js-unity', 'autocomplete' : 'off', 'step' : 'any'},
+                                    'useStyle': true,
+                                })
+                            }}
+                        </div>
+                    </div>
+                </div>
+                <div class="echo">
+                    {% for segment in form.suivi.debitRegadenosonSegment.segments %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        <div class="segment">
+                            <div class="wrap-input">
+                                {{ form_widget(segment.seg, {
+                                        'attr': {'class': 'input js-unity', 'placeholder': counter},
+                                        'useStyle': false,
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="margin-space"></div>
+                <h5>Analyse visuelle perfusion de repos</h5>
+
+                <div class="col-label">Au repos</div>
+                <div class="echo">
+                    {% for segment in form.suivi.analyseReposSegment.segments %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        {% if segment.vars.value.seg is empty%}
+                            {% set var = 1 %}
+                        {% else %}
+                            {% set var = segment.vars.value.seg %}
+                        {% endif %}
+                        <div class="segment">
+                            <div class="wrap-input">
+                                {{ form_widget(segment.seg, {
+                                        'attr': {'class': 'input js-unity', 'placeholder': counter},
+                                        'useStyle': false,
+                                        'value' : var|number_format(0, '.', ','),
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.fractionRepos, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+
+                <div class="margin-space"></div>
+                <div class="col-label">Sous régadénoson</div>
+                <div class="echo">
+                    {% for segment in form.suivi.analyseRegadenosonSegment.segments %}
+                        {% set counter = ( counter | default(0) ) + 1 %}
+                        {% if segment.vars.value.seg is empty%}
+                            {% set var = 1 %}
+                        {% else %}
+                            {% set var = segment.vars.value.seg %}
+                        {% endif %}
+                        <div class="segment">
+                            <div class="wrap-input">
+                                {{ form_widget(segment.seg, {
+                                        'attr': {'class': 'input js-unity', 'placeholder': counter},
+                                        'useStyle': false,
+                                        'value' : var|number_format(0, '.', ','),
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.suivi.fractionEffort, {
+                                'attr': {'class': 'input js-unity', 'autocomplete' : 'off'},
+                                'useStyle': true,
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="margin-space"></div>
             </section>
 
             {{ form_row(form.save, {'attr': {'class': 'form-btn btn-save', 'autocomplete' : 'off'} }) }}

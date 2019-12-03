@@ -32,6 +32,7 @@ class QcmType extends AbstractType
                     'Non' => 'Non',
                     'Non précisé' => 'Non précisé',
                 ),
+                'data' => 'Non',
                 'required' => false,
             ))
         ;

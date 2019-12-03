@@ -10,22 +10,26 @@
             {{ form_start(form, {'attr': {'class': 'login-form validate-form', 'autocomplete' : 'off'} }) }}
             {{ form_errors(form) }}
 
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+
             <span class="login-form-title">
                 Inscription
             </span>
 
             <div class="wrap-input validate-input">
-                {{ form_widget(form.email, {'attr': {'autofocus' : true, 'class': 'input', 'autocomplete' : 'off'} }) }}
+                {{ form_widget(form.email, {'attr': {'autofocus' : true, 'class': 'input', 'autocomplete' : 'email'} }) }}
                 <span class="focus-input"></span>
             </div>
 
             <div class="wrap-input validate-input">
-                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input', 'autocomplete' : 'new-password'} }) }}
                 <span class="focus-input"></span>
             </div>
 
             <div class="wrap-input validate-input">
-                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input', 'autocomplete' : 'off'} }) }}
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input', 'autocomplete' : 'confirm-password'} }) }}
                 <span class="focus-input"></span>
             </div>
 

@@ -137,7 +137,7 @@ class ParacliniqueType extends AbstractType
                 'required' => false,
             ))
             ->add('neuroesthesiometrie', NumberType::class, array(
-                'label' => 'Neuroesthésiométrie (valeur la plus basse)',
+                'label' => 'Neuroesthésiométrie (valeur la plus haute)',
                 'attr' => array(
                     'unity' => 'volt',
                     'data-min' => '3',
@@ -230,21 +230,21 @@ class ParacliniqueType extends AbstractType
                 'required' => false,
             ))
             ->add('debitReposGlobal', NumberType::class, array(
-                'label' => 'Neuroesthésiométrie (valeur la plus basse)',
+                'label' => 'Neuroesthésiométrie (valeur la plus haute)',
                 'attr' => array(
-                    'unity' => 'ml/min/g',
-                    'data-min' => '0.5',
-                    'data-max' => '4',
+                    'unity' => 'volt',
+                    'data-min' => '3',
+                    'data-max' => '50',
                     'step' => '0.1',
                 ),
                 'required' => false,
             ))
             ->add('debitRegadenosonGlobal', NumberType::class, array(
-                'label' => 'Neuroesthésiométrie (valeur la plus basse)',
+                'label' => 'Neuroesthésiométrie (valeur la plus haute)',
                 'attr' => array(
-                    'unity' => 'ml/min/g',
-                    'data-min' => '0.5',
-                    'data-max' => '4',
+                    'unity' => 'volt',
+                    'data-min' => '3',
+                    'data-max' => '50',
                     'step' => '0.1',
                 ),
                 'required' => false,

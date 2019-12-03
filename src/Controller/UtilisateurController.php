@@ -56,6 +56,23 @@ class UtilisateurController extends AbstractController
         return $this->redirectToRoute('login');
     }
 
+    private function getErrorsFromForm($form)
+    {
+        $errors = array();
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+        foreach ($form->all() as $childForm) {
+            if ($childForm instanceof FormInterface) {
+                if ($childErrors = $this->getErrorsFromForm($childForm)) {
+                    $errors[$childForm->getName()] = $childErrors;
+                }
+            }
+        }
+    
+        return $errors;
+    }
+
     /**
      * @Route("/register", name="register", methods="GET|POST")
      */
@@ -66,21 +83,27 @@ class UtilisateurController extends AbstractController
         $form = $this->createForm(UtilisateurType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->get('save')->isClicked()) {
-                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-                $user->setPassword($password);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
+        $error = null;
 
-                $session->getFlashBag()->add('success', 'Félicitations ! Votre compte a été créé avec succès !');
-                return $this->redirectToRoute('login');
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                if ($form->get('save')->isClicked()) {
+                    $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                    $user->setPassword($password);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                    $session->getFlashBag()->add('success', 'Félicitations ! Votre compte a été créé avec succès !');
+                    return $this->redirectToRoute('login');
+                }
+            } else {
+                $error = $this->getErrorsFromForm($form);
             }
         }
         return $this->render('utilisateur/register.html.twig', [
             'controller_name' => 'RegisterController',
             'form' => $form->createView(),
+            'error' => $error,
         ]);
     }
 

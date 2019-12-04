@@ -56,29 +56,11 @@ class UtilisateurController extends AbstractController
         return $this->redirectToRoute('login');
     }
 
-    private function getErrorsFromForm($form)
-    {
-        $errors = array();
-        foreach ($form->getErrors() as $error) {
-            $errors[] = $error->getMessage();
-        }
-        foreach ($form->all() as $childForm) {
-            if ($childForm instanceof FormInterface) {
-                if ($childErrors = $this->getErrorsFromForm($childForm)) {
-                    $errors[$childForm->getName()] = $childErrors;
-                }
-            }
-        }
-    
-        return $errors;
-    }
-
     /**
      * @Route("/register", name="register", methods="GET|POST")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $session = $request->getSession();
         $user = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $user);
         $form->handleRequest($request);
@@ -93,11 +75,12 @@ class UtilisateurController extends AbstractController
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($user);
                     $em->flush();
-                    $session->getFlashBag()->add('success', 'Félicitations ! Votre compte a été créé avec succès !');
+                    $this->addFlash('notice', 'Félicitations ! Votre compte a été créé avec succès !');
                     return $this->redirectToRoute('login');
                 }
             } else {
-                $error = $this->getErrorsFromForm($form);
+                if (strcmp($form->get('plainPassword')->get('first')->getData(), $form->get('plainPassword')->get('second')->getData()))
+                    $error = 'Les deux mots de passe ne sont pas identiques.';
             }
         }
         return $this->render('utilisateur/register.html.twig', [

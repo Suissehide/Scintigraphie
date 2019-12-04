@@ -2,26 +2,23 @@
 * Close alerts
 */
 
-var alert_pos = 60;
+var alert_pos = 11;
 setInterval(fadeOutAlert, 1000);
 
 function fadeOutAlert() {
-    $('.alerte').delay(2000).fadeOut(2000, function () {
-        if (alert_pos > 60) {
-            alert_pos -= 72;
+    $('.toast').delay(3000).fadeOut(2000, function () {
+        if (alert_pos > 11) {
+            alert_pos -= 99;
         }
     });
 }
 
-$('body').on('click', '.closebtn', function () {
-    if (alert_pos > 60) {
-        alert_pos -= 72;
+$('body').on('click', '.toast__close', function () {
+    if (alert_pos > 11) {
+        alert_pos -= 99;
     }
-    var div = $(this).parents('div');
-    div.css('opacity', '0');
-    setTimeout(function () {
-        div.css('display', 'none');
-    }, 600);
+    var parent = $(this).parent('.toast');
+    parent.fadeOut("fast", function() { $(this).remove(); } );
 })
 
 /**

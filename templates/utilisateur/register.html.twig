@@ -10,9 +10,11 @@
             {{ form_start(form, {'attr': {'class': 'login-form validate-form', 'autocomplete' : 'off'} }) }}
             {{ form_errors(form) }}
 
-            {% if error %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
+            <ul class="alert alert-danger">
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
 
             <span class="login-form-title">
                 Inscription
@@ -60,10 +62,10 @@
             height: window.innerHeight,
             width: window.innerWidth,
             x_colors: [
-                '#2892d7', '#d63b53'
+                '#E40C2B', '#438945', '#F7F4E9'
             ],
             y_colors: [
-                '#1a535c', '#f4f9f7'
+                '#1D1D2C', '#3CBCC3', '#F7F4E9'
             ],
             // cell_size: Math.ceil(window.innerWidth / 8)
         })

@@ -65,8 +65,6 @@ class UtilisateurController extends AbstractController
         $form = $this->createForm(UtilisateurType::class, $user);
         $form->handleRequest($request);
 
-        $error = null;
-
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 if ($form->get('save')->isClicked()) {
@@ -79,14 +77,20 @@ class UtilisateurController extends AbstractController
                     return $this->redirectToRoute('login');
                 }
             } else {
+                $errors = array();
+                foreach ($form->getErrors(true) as $error) {
+                    $errors[] = $error->getMessage();
+                }
                 if (strcmp($form->get('plainPassword')->get('first')->getData(), $form->get('plainPassword')->get('second')->getData()))
-                    $error = 'Les deux mots de passe ne sont pas identiques.';
+                    $errors[] = 'Les deux mots de passe ne sont pas identiques.';
+                if (($key = array_search('This value is not valid.', $errors)) !== false)
+                    unset($errors[$key]);
             }
         }
         return $this->render('utilisateur/register.html.twig', [
             'controller_name' => 'RegisterController',
             'form' => $form->createView(),
-            'error' => $error,
+            'errors' => $errors,
         ]);
     }
 
@@ -100,26 +104,31 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/utilisateur/ajax", name="utilisateur_roles_edit")
      */
-    public function roles_edit(UtilisateurRepository $utilisateurRepository, Request $request): JsonResponse
+    public function roles_edit(UtilisateurRepository $utilisateurRepository, Request $request, AuthorizationCheckerInterface $authChecker): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        if ($request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest() && true === $authChecker->isGranted('ROLE_ADMIN')) {
             $email = $request->request->get('email');
+            $nom = $request->request->get('nom');
+            $prenom = $request->request->get('prenom');
             $roles = $request->request->get('roles');
 
             $utilisateur = $utilisateurRepository->findOneBy(['email' => $email]);
-            if ($roles == "Invité")
-                $utilisateur->setRoles(["ROLE_GUEST"]);
-            else if ($roles == "Utilisateur")
-                $utilisateur->setRoles(["ROLE_USER"]);
-            else if ($roles == "Administrateur")
-                $utilisateur->setRoles(["ROLE_ADMIN"]);
-            $em->flush();
+            if ($utilisateur) {
+                if ($roles == "Invité")
+                    $utilisateur->setRoles(["ROLE_GUEST"]);
+                else if ($roles == "Utilisateur")
+                    $utilisateur->setRoles(["ROLE_USER"]);
+                else if ($roles == "Administrateur")
+                    $utilisateur->setRoles(["ROLE_ADMIN"]);
+                $utilisateur->setNom($nom);
+                $utilisateur->setPrenom($prenom);
+                $em->flush();
+            }
             return new JsonResponse();
         }
     }
@@ -149,12 +158,14 @@ class UtilisateurController extends AbstractController
             $utilisateurs = $utilisateurs->getQuery()->getResult();
             $rows = array();
             foreach ($utilisateurs as $utilisateur) {
+                $status = $this->getUser()->getId() == $utilisateur->getId() ? 1 : 0;
                 $row = array(
                     "id" => $utilisateur->getId(),
                     "nom" => $utilisateur->getNom(),
                     "prenom" => $utilisateur->getPrenom(),
                     "email" => $utilisateur->getEmail(),
                     "roles" => $utilisateur->getRoles(),
+                    "status" => $status,
                 );
                 array_push($rows, $row);
             }
@@ -170,6 +181,7 @@ class UtilisateurController extends AbstractController
 
         return $this->render('utilisateur/list.html.twig', [
             'controller_name' => 'ListController',
+            'id' => $this->getUser()->getId(),
         ]);
     }
 
@@ -222,7 +234,6 @@ class UtilisateurController extends AbstractController
      */
     public function onAuthenticationSuccess(UrlGeneratorInterface $router, AuthorizationCheckerInterface $authChecker)
     {
-
         if (true === $authChecker->isGranted('ROLE_GUEST')) {
             // c'est un aministrateur : on le rediriger vers l'espace admin
             $redirection = new RedirectResponse($router->generate('guest'));
@@ -252,5 +263,4 @@ class UtilisateurController extends AbstractController
 
     }
     */
-
 }

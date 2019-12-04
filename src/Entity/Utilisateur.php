@@ -39,7 +39,7 @@ class Utilisateur implements UserInterface
     private $password;
 
     /**
-     * @Assert\Length(min=6, max=128)
+     * @Assert\Length(min=6, max=128, minMessage = "Le mot de passe est trop court. Il doit faire {{ limit }} caractères ou plus.", maxMessage = "Le mot de passe est trop long. Il ne doit pas faire plus de {{ limit }} caractères.")
      * @Assert\Regex(pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/", message="Utilisez au minimum 1 lettre majuscule, 1 lettre minuscule et 1 chiffre.")
      */
     private $plainPassword;

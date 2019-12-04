@@ -8,8 +8,7 @@
     -webkit-text-stroke: 0.75px black;
 }
 
-.actionBar .glyphicon-search,
-.btn-group .glyphicon-search {
+.actionBar .glyphicon-search, .btn-group .glyphicon-search {
     -webkit-text-stroke: 0.75px white;
 }
 
@@ -54,9 +53,7 @@ td .btn-default {
     background-color: #da6375;
 }
 
-.command-edit .fa,
-.command-view .fa,
-.command-delete .fa {
+.command-edit .fa, .command-view .fa, .command-delete .fa {
     color: #f4f9f7;
 }
 
@@ -78,13 +75,11 @@ td .btn-default {
     background-color: #3CBCC3;
 }
 
-.table th:active,
-.table th:hover {
+.table th:active, .table th:hover {
     background: rgb(53, 167, 173);
 }
 
-.table th span,
-.table th {
+.table th span, .table th {
     color: #f4f9f7;
 }
 
@@ -107,12 +102,7 @@ td .btn-default {
     background-color: #c2dad5;
 }
 
-.table-condensed>tbody>tr>td,
-.table-condensed>tbody>tr>th,
-.table-condensed>tfoot>tr>td,
-.table-condensed>tfoot>tr>th,
-.table-condensed>thead>tr>td,
-.table-condensed>thead>tr>th {
+.table-condensed>tbody>tr>td, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>td, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>thead>tr>th {
     padding: 10px;
 }
 
@@ -125,7 +115,7 @@ td .btn-default {
     padding: 0 10px 0 15px;
 }
 
-.table-5 > div {
+.table-5>div {
     flex: 20%;
 }
 
@@ -155,8 +145,7 @@ td .btn-default {
     border-color: #3CBCC3;
 }
 
-.pagination li.last a,
-.pagination li.first a {
+.pagination li.last a, .pagination li.first a {
     border-radius: 50%;
 }
 
@@ -187,9 +176,7 @@ td .btn-default {
     margin-bottom: 10px;
 }
 
-input[readonly],
-textarea[readonly]:focus,
-input[readonly]:focus {
+input[readonly], textarea[readonly]:focus, input[readonly]:focus {
     border: 1px solid #E40C2B;
 }
 
@@ -299,9 +286,7 @@ input[readonly]:focus {
     margin-bottom: 30px;
 }
 
-label,
-.col-label,
-.row-label {
+label, .col-label, .row-label {
     font-family: Ubuntu-Regular;
     color: #808080;
     line-height: 1.2;
@@ -434,17 +419,14 @@ label,
     bottom: -5px;
 }
 
-.hero-tabs h3,
-.slide h3,
-main h3 {
+.hero-tabs h3, .slide h3, main h3 {
     position: relative;
     display: inline-block;
     opacity: 0.6;
     margin-bottom: 10px;
 }
 
-.hero-tabs h5,
-.slide h5 {
+.hero-tabs h5, .slide h5 {
     position: relative;
     width: fit-content;
     font-size: 18px;
@@ -509,9 +491,7 @@ main h3 {
     transition: all 0.5s ease;
 }
 
-.hero-tab,
-.hero-tab:visited,
-.hero-tab:focus {
+.hero-tab, .hero-tab:visited, .hero-tab:focus {
     text-decoration: none;
 }
 
@@ -527,6 +507,10 @@ main h3 {
 .hero-text {
     position: absolute;
     color: #f4f9f7;
+}
+
+.waiting {
+    margin-bottom: 15px;
 }
 
 .qcm {
@@ -558,11 +542,7 @@ main h3 {
     padding-top: 5px;
 }
 
-
-.qcm-question input[readonly],
-.qcm-question input[readonly]:focus,
-.qcm-question textarea[readonly],
-.qcm-question textarea[readonly]:focus {
+.qcm-question input[readonly], .qcm-question input[readonly]:focus, .qcm-question textarea[readonly], .qcm-question textarea[readonly]:focus {
     border: none;
     background: none;
     resize: none;
@@ -591,22 +571,26 @@ main h3 {
 }
 
 .tag-yellow {
-    background: coral;
+    background: #ccc;
+    color: #000;
 }
 
 .tag-green {
-    background: #1D1D2C;
+    background: #438945;
 }
 
 .tag-red {
     background: #E40C2B;
 }
 
+.striped {
+    background: repeating-linear-gradient( 45deg, #f8f6ff, #f8f6ff 10px, #fff 10px, #fff 20px);
+    cursor: not-allowed !important;
+}
+
 /* ========= Modal ========= */
 
-.modal-header,
-.modal h4,
-.modal .close {
+.modal-header, .modal h4, .modal .close {
     background-color: #3CBCC3;
     color: white !important;
     text-align: center;
@@ -731,8 +715,7 @@ main h3 {
     font-size: 20px;
 }
 
-.toc--top .toc-open,
-.toc--top .toc-close {
+.toc--top .toc-open, .toc--top .toc-close {
     top: -30px;
 }
 
@@ -740,7 +723,6 @@ main h3 {
     .main {
         padding-left: 15px;
     }
-
     .toc {
         display: none;
     }
@@ -776,8 +758,7 @@ main h3 {
     padding: 4px;
 }
 
-.contents h2,
-.contents h3 {
+.contents h2, .contents h3 {
     padding-top: 1em;
 }
 
@@ -894,4 +875,205 @@ main h3 {
     -webkit-appearance: none;
     -moz-appearance: textfield;
     margin: 0;
+}
+
+/**
+* ========= ERROR =========
+*/
+
+#notfound {
+    position: relative;
+    height: 100vh;
+}
+
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#notfound .notfound-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#notfound .notfound-bg>div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #eee;
+}
+
+#notfound .notfound-bg>div:nth-child(1) {
+    left: 20%;
+}
+
+#notfound .notfound-bg>div:nth-child(2) {
+    left: 40%
+}
+
+#notfound .notfound-bg>div:nth-child(3) {
+    left: 60%
+}
+
+#notfound .notfound-bg>div:nth-child(4) {
+    left: 80%
+}
+
+#notfound .notfound-bg>div:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -0.5px;
+    -webkit-transform: translateY(-160px);
+    -ms-transform: translateY(-160px);
+    transform: translateY(-160px);
+    height: 160px;
+    width: 2px;
+    background-color: #3CBCC3;
+}
+
+@-webkit-keyframes drop {
+    90% {
+        height: 20px;
+    }
+    100% {
+        height: 160px;
+        -webkit-transform: translateY(calc(100vh + 160px));
+        transform: translateY(calc(100vh + 160px));
+    }
+}
+
+@keyframes drop {
+    90% {
+        height: 20px;
+    }
+    100% {
+        height: 160px;
+        -webkit-transform: translateY(calc(100vh + 160px));
+        transform: translateY(calc(100vh + 160px));
+    }
+}
+
+#notfound .notfound-bg>div:nth-child(1):after {
+    -webkit-animation: drop 3s infinite linear;
+    animation: drop 3s infinite linear;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+#notfound .notfound-bg>div:nth-child(2):after {
+    -webkit-animation: drop 2s infinite linear;
+    animation: drop 2s infinite linear;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+#notfound .notfound-bg>div:nth-child(3):after {
+    -webkit-animation: drop 3s infinite linear;
+    animation: drop 3s infinite linear;
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+#notfound .notfound-bg>div:nth-child(4):after {
+    -webkit-animation: drop 2s infinite linear;
+    animation: drop 2s infinite linear;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.notfound {
+    max-width: 705px;
+    width: 100%;
+    text-align: center;
+}
+
+.notfound .notfound-404 {
+    height: 210px;
+    line-height: 210px;
+}
+
+.notfound .notfound-404 h1 {
+    font-family: Ubuntu-Regular, sans-serif;
+    font-size: 188px;
+    font-weight: 700;
+    margin: 0px;
+    text-shadow: 4px 4px 0px #3CBCC3;
+}
+
+.notfound h2 {
+    font-family: Ubuntu-Regular, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+}
+
+.notfound p {
+    font-family: 'Lato', sans-serif;
+    color: #000;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.notfound a {
+    font-family: 'Lato', sans-serif;
+    padding: 10px 30px;
+    display: inline-block;
+    color: #000;
+    font-weight: 400;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #3CBCC3;
+    box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #3CBCC3;
+    text-decoration: none;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.notfound a:hover {
+    background-color: #3CBCC3;
+    -webkit-box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #3CBCC3;
+    box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #3CBCC3;
+}
+
+.notfound-social {
+    margin-top: 35px;
+}
+
+.notfound-social>a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px;
+    margin: 0px 5px;
+}
+
+.notfound-social>a:hover {
+    background-color: #3CBCC3;
+    -webkit-box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #3CBCC3;
+    box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #3CBCC3;
+}
+
+@media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+        height: 122px;
+        line-height: 122px;
+    }
+    .notfound .notfound-404 h1 {
+        font-size: 122px;
+    }
+    .notfound h2 {
+        font-size: 26px;
+    }
 }

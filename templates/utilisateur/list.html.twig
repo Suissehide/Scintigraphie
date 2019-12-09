@@ -17,6 +17,21 @@
             Liste des utilisateurs
         </div>
 
+        <div class="form_checkbox_group">
+            <div class="form_checkbox_group-item">
+                <input id="checkbox-1" type="checkbox" name="checkbox" value="ROLE_GUEST" checked>
+                <label for="checkbox-1">Invité</label>
+            </div>
+            <div class="form_checkbox_group-item">
+                <input id="checkbox-2" type="checkbox" name="checkbox" value="ROLE_USER" checked>
+                <label for="checkbox-2">Utilisateur</label>
+            </div>
+            <div class="form_checkbox_group-item">
+                <input id="checkbox-3" type="checkbox" name="checkbox" value="ROLE_ADMIN" checked>
+                <label for="checkbox-3">Administrateur</label>
+            </div>
+        </div>
+
         <div class="table-wrapper">
             <table cellspacing="0" class="table table-condensed table-hover table-striped" id="data-grid">
                 <thead>
@@ -25,7 +40,7 @@
                         <th data-column-id="email">Email</th>
                         <th data-column-id="nom">Nom</th>
                         <th data-column-id="prenom">Prénom</th>
-                        <th data-column-id="roles" data-formatter="roles">Roles</th>
+                        <th data-column-id="roles" data-formatter="roles" data-sortable="false">Roles</th>
                         {# <th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="15%">Actions</th> #}
                     </tr>
                 </thead>
@@ -129,7 +144,7 @@
                     "email": email,
                     "prenom": prenom,
                     "nom": nom,
-                    "roles": roles
+                    "roles": roles,
                 },
                 success: function (resp) {
                     $('body').prepend(`<div class="toast toast--green" style="top:` + alert_pos + `px;">
@@ -158,13 +173,27 @@
             });
         });
 
+        var roles = [];
+        getRoles();
+        function getRoles() {
+            roles = [];
+            $('.form_checkbox_group :checked').each(function() {
+                roles.push($(this).val());
+            });
+        }
+        $('.form_checkbox_group').change(function () {
+            getRoles();
+            $("#data-grid").bootgrid('reload');
+        })
+
         var grid = $("#data-grid").bootgrid({
             rowCount: [
-                -1, 10, 20, 50
+                20, 50, 100, -1
             ],
             columnSelection: false,
             ajax: true,
             requestHandler: function (request) {
+                request.roles = roles;
                 return request;
             },
             url: "{{ path('utilisateur_list') }}",

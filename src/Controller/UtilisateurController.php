@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Form\FormError;
 
 /**
  * @Route("/")
@@ -64,12 +65,14 @@ class UtilisateurController extends AbstractController
         $user = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $user);
         $form->handleRequest($request);
+        $errors = [];
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 if ($form->get('save')->isClicked()) {
                     $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
                     $user->setPassword($password);
+                    $user->setRoles(['ROLE_GUEST']);
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($user);
                     $em->flush();
@@ -77,7 +80,6 @@ class UtilisateurController extends AbstractController
                     return $this->redirectToRoute('login');
                 }
             } else {
-                $errors = array();
                 foreach ($form->getErrors(true) as $error) {
                     $errors[] = $error->getMessage();
                 }
@@ -94,7 +96,7 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
-    /**
+    /** 
      * @Route("/guest", name="guest")
      */
     public function guest()
@@ -143,13 +145,13 @@ class UtilisateurController extends AbstractController
             $rowCount = $request->request->get('rowCount');
             $searchPhrase = $request->request->get('searchPhrase');
             $sort = $request->request->get('sort');
+            $roles = $request->request->get('roles');
 
-            $utilisateurs = $utilisateurRepository->findByFilter($sort, $searchPhrase);
-            if ($searchPhrase != "") {
+            $utilisateurs = $utilisateurRepository->findByFilter($sort, $searchPhrase, $roles);
+            if ($searchPhrase != "" || !empty($roles))
                 $count = count($utilisateurs->getQuery()->getResult());
-            } else {
+            else
                 $count = $utilisateurRepository->compte();
-            }
             if ($rowCount != -1) {
                 $min = ($current - 1) * $rowCount;
                 $max = $rowCount;
@@ -190,13 +192,12 @@ class UtilisateurController extends AbstractController
      */
     public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-
         $user = $this->getUser();
         $roles = $user->getRoles();
-        $form = $this->createForm(UtilisateurType::class, $user);
-        $psw = $this->createForm(PasswordFormType::class, $user);
         $em = $this->getDoctrine()->getManager();
+        $errors = [];
 
+        $form = $this->createForm(UtilisateurType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('save')->isClicked()) {
@@ -208,17 +209,29 @@ class UtilisateurController extends AbstractController
             return $this->redirectToRoute('utilisateur_edit');
         }
 
+        $psw = $this->createForm(PasswordFormType::class, $user);
         $psw->handleRequest($request);
         if ($psw->isSubmitted() && $psw->isValid()) {
-            if ($psw->get('edit')->isClicked()) {
+            $oldPassword = $request->request->get('password_form')['oldPassword'];
+            if ($psw->get('edit')->isClicked() && $passwordEncoder->isPasswordValid($user, $oldPassword)) {
                 $user = $form->getData();
                 $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
                 $user->setPassword($password);
                 $user->setRoles($roles);
+
                 $em->persist($user);
                 $em->flush();
+
+                $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+
+                return $this->redirectToRoute('utilisateur_edit');
+            } else {
+                $errors[] = 'Ancien mot de passe incorrect.';
+                foreach ($form->getErrors(true) as $error) {
+                    $errors[] = $error->getMessage();
+                }
+                dump($errors);
             }
-            return $this->redirectToRoute('utilisateur_edit');
         }
 
         return $this->render('utilisateur/edit.html.twig', [
@@ -226,6 +239,7 @@ class UtilisateurController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
             'psw' => $psw->createView(),
+            'errors' => $errors,
         ]);
     }
 

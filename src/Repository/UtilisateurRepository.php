@@ -27,16 +27,20 @@ class UtilisateurRepository extends ServiceEntityRepository
                     ->getSingleScalarResult();
     }
 
-    public function findByFilter($sort, $searchPhrase)
+    public function findByFilter($sort, $searchPhrase, $roles)
     {
         $qb = $this->createQueryBuilder('p');
-
+        if ($roles) {
+            foreach($roles as $index => $role) {
+                $qb->orWhere("p.roles LIKE :role$index");
+                $qb->setParameter("role$index", '%' .$role. '%');
+            }
+        }
         if ($searchPhrase != "") {
             $qb->andWhere('
                     p.nom LIKE :search
                     OR p.prenom LIKE :search
                     OR p.email LIKE :search
-                    OR p.roles LIKE :search
                 ')
                 ->setParameter('search', '%' . $searchPhrase . '%');
         }

@@ -17,8 +17,11 @@ $('body').on('click', '.toast__close', function () {
     if (alert_pos > 11) {
         alert_pos -= 99;
     }
-    var parent = $(this).parent('.toast');
-    parent.fadeOut("fast", function() { $(this).remove(); } );
+    var div = $(this).parents('.toast');
+    div.css('opacity', '0');
+    setTimeout(function () {
+        div.css('display', 'none');
+    }, 600);
 })
 
 /**

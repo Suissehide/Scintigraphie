@@ -249,8 +249,6 @@ class PatientController extends AbstractController
      */
     public function delete(Request $request, Patient $patient) : Response
     {
-        dump($this->isCsrfTokenValid('delete' . $patient->getId(), $request->request->get('_token')));
-        
         if ($this->isCsrfTokenValid('delete' . $patient->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($patient);

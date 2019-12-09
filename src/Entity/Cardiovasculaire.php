@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardiovasculaireRepository")
@@ -18,81 +19,97 @@ class Cardiovasculaire
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateHTA;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $systolique;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $diastolique;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $tabagisme;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $paquetAnnee;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $poids;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $taille;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $tourDeTaille;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $diabete;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $retinopathie;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateDiabete;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $microalbuminurie;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $neuropathie;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $antecedents;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $precisions;
 

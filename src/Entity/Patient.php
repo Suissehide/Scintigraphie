@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
@@ -20,11 +21,13 @@ class Patient
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $prenom;
 
@@ -35,33 +38,39 @@ class Patient
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $sexe;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateNaissance;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $age;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Cardiovasculaire", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Cardiovasculaire", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $cardiovasculaire;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Suivi", cascade={"persist", "remove"})
-     */
-    private $suivi;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Paraclinique", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Paraclinique", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $paraclinique;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Suivi", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
+     */
+    private $suivi;
 
     public function __construct()
     {

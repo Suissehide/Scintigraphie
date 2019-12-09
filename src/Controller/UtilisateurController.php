@@ -230,7 +230,6 @@ class UtilisateurController extends AbstractController
                 foreach ($form->getErrors(true) as $error) {
                     $errors[] = $error->getMessage();
                 }
-                dump($errors);
             }
         }
 

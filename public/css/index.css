@@ -233,6 +233,10 @@ input[readonly], textarea[readonly]:focus, input[readonly]:focus {
     transition: all 0.4s;
 }
 
+.form-btn:focus {
+    color: #fff;
+}
+
 .form-btn:hover {
     background-color: #2d5a2e;
     color: #fff;

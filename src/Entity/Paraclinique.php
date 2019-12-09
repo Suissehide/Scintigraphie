@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParacliniqueRepository")
@@ -18,311 +19,373 @@ class Paraclinique
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $hba1c;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $ldl;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $hdl;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $triglycerides;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $creatininemie;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $dfg;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $microAlb;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $rapport;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $ipsDroit;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $ipsGauche;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $tbpiDroit;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $tbpiGauche;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $neuroesthesiometrie;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateScintigraphie;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $fcRepos;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $fcMax;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $taRepos;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $taPic;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $debitReposGlobal;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $debitRegadenosonGlobal;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $fractionRepos;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $fractionEffort;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $coronaireDroiteStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $coronaireDroiteFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $ivaStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $ivaFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $circonflexeStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $circonflexeFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $diagonaleStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $diagonaleFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $marginaleStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $marginaleFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $pontageStenose;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $pontageFFR;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $iec;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $betaBloquant;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $antiAgregant;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $antiAldosterone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $antiDiabetique;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $insuline;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $diuretique;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $debitReposSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $debitRegadenosonSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $analyseReposSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $analyseRegadenosonSegment;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $rythme;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $coronaireDroiteCMR;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $ivaCMR;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $circonflexeCMR;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $diagonaleCMR;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $marginaleCMR;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $pontageCMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $coronaireDroiteIMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $ivaIMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $circonflexeIMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $diagonaleIMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $marginaleIMR;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $pontageIMR;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateCoronarographie;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $fasekas;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $avc;
 

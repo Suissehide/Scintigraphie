@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SuiviRepository")
@@ -18,81 +19,97 @@ class Suivi
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $suivi;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Pack", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $evenements;
 
-        /**
+    /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"patient"})
      */
     private $dateScintigraphie;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $fcRepos;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"patient"})
      */
     private $fcMax;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $taRepos;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $taPic;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"patient"})
      */
     private $rythme;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $fractionRepos;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $fractionEffort;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $debitReposGlobal;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Groups({"patient"})
      */
     private $debitRegadenosonGlobal;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $debitReposSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $debitRegadenosonSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $analyseReposSegment;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Bullseye", cascade={"persist", "remove"}, fetch="EAGER")
+     * @Groups({"patient"})
      */
     private $analyseRegadenosonSegment;
 

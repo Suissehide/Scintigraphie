@@ -599,32 +599,6 @@ ul.alert-danger>li {
 
 /* ========= Alert flashbag ========= */
 
-.alerte {
-    padding: 20px;
-    opacity: 0.9;
-    transition: opacity 0.7s;
-    margin-bottom: 15px;
-    position: fixed;
-    right: 10px;
-    z-index: 1000;
-    margin: 10px;
-}
-
-.closebtn {
-    margin-left: 15px;
-    color: inherit;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.closebtn:hover {
-    color: black;
-}
-
 .toast__svg {
     fill: #fff;
 }

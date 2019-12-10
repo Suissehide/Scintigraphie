@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% form_theme form _self %}
+{% form_theme psw _self %}
 
 {% block form_row %}
     {% set widget_attr = {} %}
@@ -79,23 +80,17 @@
 
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="wrap-input">
-                                {{ form_row(psw.oldPassword, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
-                            </div>
+                            {{ form_row(psw.oldPassword, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="wrap-input">
-                                {{ form_row(psw.plainPassword.first, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
-                            </div>
+                            {{ form_row(psw.plainPassword.first, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="wrap-input">
-                                {{ form_row(psw.plainPassword.second, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
-                            </div>
+                            {{ form_row(psw.plainPassword.second, {'attr': {'class': 'input', 'placeholder': '', 'autocomplete' : 'off'} }) }}
                         </div>
                     </div>
                     <div class="row">

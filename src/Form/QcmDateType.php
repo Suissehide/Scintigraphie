@@ -33,6 +33,7 @@ class QcmDateType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
+                'data' => 'Non',
                 'required' => false,
             ))
             ->add('date', DateType::class, array(

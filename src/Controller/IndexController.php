@@ -70,8 +70,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/", name="csv", methods="GET")
-     *
+     * @Route("/csv", name="csv", methods="GET")
      */
     public function generateCsvAction(PatientRepository $patientRepository)
     {

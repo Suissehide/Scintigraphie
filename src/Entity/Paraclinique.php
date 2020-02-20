@@ -48,6 +48,12 @@ class Paraclinique
     private $creatininemie;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"patient"})
+     */
+    private $dialyse;
+
+    /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      * @Groups({"patient"})
      */
@@ -447,9 +453,21 @@ class Paraclinique
         return $this->creatininemie;
     }
 
-    public function setCreatininémie($creatininemie): self
+    public function setCreatininemie($creatininemie): self
     {
         $this->creatininemie = $creatininemie;
+
+        return $this;
+    }
+
+    public function getDialyse(): ?bool
+    {
+        return $this->dialyse;
+    }
+
+    public function setDialyse(?bool $dialyse): self
+    {
+        $this->dialyse = $dialyse;
 
         return $this;
     }
@@ -846,13 +864,6 @@ class Paraclinique
     public function setDiuretique(?string $diuretique): self
     {
         $this->diuretique = $diuretique;
-
-        return $this;
-    }
-
-    public function setCreatininemie($creatininemie): self
-    {
-        $this->creatininemie = $creatininemie;
 
         return $this;
     }

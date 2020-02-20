@@ -77,7 +77,7 @@ class SuiviType extends AbstractType
                 'attr' => array(
                     'unity' => 'mmHg',
                     'data-min' => '80',
-                    'data-max' => '200',
+                    'data-max' => '350',
                     'step' => '1',
                 ),
                 'required' => false,
@@ -96,8 +96,8 @@ class SuiviType extends AbstractType
                 'label' => 'Fraction d’éjection au repos',
                 'attr' => array(
                     'unity' => '%',
-                    'data-min' => '25',
-                    'data-max' => '70',
+                    'data-min' => '5',
+                    'data-max' => '75',
                     'step' => '0.1',
                 ),
                 'required' => false,
@@ -106,8 +106,8 @@ class SuiviType extends AbstractType
                 'label' => 'Fraction d’éjection sous régadénoson',
                 'attr' => array(
                     'unity' => '%',
-                    'data-min' => '25',
-                    'data-max' => '70',
+                    'data-min' => '5',
+                    'data-max' => '75',
                     'step' => '0.1',
                 ),
                 'required' => false,

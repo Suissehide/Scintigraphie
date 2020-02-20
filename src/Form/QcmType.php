@@ -22,6 +22,7 @@ class QcmType extends AbstractType
             //     ),
             //     'required' => false,
             // ))
+
             ->add('reponse', ChoiceType::class, array(
                 'label' => 'Réponse',
                 'expanded' => true,
@@ -32,7 +33,7 @@ class QcmType extends AbstractType
                     'Non' => 'Non',
                     'Non précisé' => 'Non précisé',
                 ),
-                'data' => 'Non',
+                'empty_data' => 'Non',
                 'required' => false,
             ))
         ;

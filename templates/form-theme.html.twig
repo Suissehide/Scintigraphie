@@ -87,3 +87,8 @@
         </div>
     {% endif %}
 {% endblock number_widget %}
+
+{% block checkbox_widget %}
+    <input class="input-checkbox" type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    <label class="label-checkbox" for="{{ id }}"></label>
+{% endblock checkbox_widget %}

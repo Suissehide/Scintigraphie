@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 
 class ParacliniqueType extends AbstractType
 {
@@ -64,6 +66,10 @@ class ParacliniqueType extends AbstractType
                     'data-max' => '300',
                     'step' => '0.01',
                 ),
+                'required' => false,
+            ))
+            ->add('dialyse', CheckboxType::class, array(
+                'label' => 'Patient dialysé',
                 'required' => false,
             ))
             ->add('dfg', NumberType::class, array(
@@ -194,7 +200,7 @@ class ParacliniqueType extends AbstractType
                 'attr' => array(
                     'unity' => 'mmHg',
                     'data-min' => '80',
-                    'data-max' => '200',
+                    'data-max' => '350',
                     'step' => '1',
                 ),
                 'required' => false,
@@ -213,8 +219,8 @@ class ParacliniqueType extends AbstractType
                 'label' => 'Fraction d’éjection au repos',
                 'attr' => array(
                     'unity' => '%',
-                    'data-min' => '25',
-                    'data-max' => '70',
+                    'data-min' => '5',
+                    'data-max' => '75',
                     'step' => '0.1',
                 ),
                 'required' => false,
@@ -223,8 +229,8 @@ class ParacliniqueType extends AbstractType
                 'label' => 'Fraction d’éjection sous régadénoson',
                 'attr' => array(
                     'unity' => '%',
-                    'data-min' => '25',
-                    'data-max' => '70',
+                    'data-min' => '5',
+                    'data-max' => '75',
                     'step' => '0.1',
                 ),
                 'required' => false,

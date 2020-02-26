@@ -70,6 +70,7 @@ class CardiovasculaireType extends AbstractType
                 'choices' => array(
                     'Oui' => 'Oui',
                     'Non' => 'Non',
+                    'Inconnu' => 'Inconnu',
                 ),
                 'required' => false,
             ))

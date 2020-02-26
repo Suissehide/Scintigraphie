@@ -24,6 +24,7 @@ class QcmDateType extends AbstractType
             //     ),
             //     'required' => false,
             // ))
+            
             ->add('reponse', ChoiceType::class, array(
                 'label' => 'Réponse',
                 'expanded' => true,
@@ -33,9 +34,10 @@ class QcmDateType extends AbstractType
                     'Oui' => 'Oui',
                     'Non' => 'Non',
                 ),
-                'data' => 'Non',
+                'empty_data' => 'Non',
                 'required' => false,
             ))
+
             ->add('date', DateType::class, array(
                 'label' => 'Date de l\'événement',
                 'widget' => 'single_text',

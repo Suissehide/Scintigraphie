@@ -389,6 +389,106 @@ class Paraclinique
      */
     private $avc;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ivaPourcentageRegdn;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ivaPourcentageRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $ivaDebitRegdn;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $ivaDebitRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $ivaReserve;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cxPourcentageRegdn;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cxPourcentageRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cxDebitRegdn;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cxDebitRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cxReserve;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cdtePourcentageRegdn;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cdtePourcentageRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cdteDebitRegdn;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cdteDebitRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cdteReserve;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $totalPourcentageRegdn;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $totalPourcentageRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $totalDebitRegdn;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $totalDebitRepos;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $totalReserve;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -1141,6 +1241,246 @@ class Paraclinique
     public function setAvc(?string $avc): self
     {
         $this->avc = $avc;
+
+        return $this;
+    }
+
+    public function getIvaPourcentageRegdn(): ?int
+    {
+        return $this->ivaPourcentageRegdn;
+    }
+
+    public function setIvaPourcentageRegdn(?int $ivaPourcentageRegdn): self
+    {
+        $this->ivaPourcentageRegdn = $ivaPourcentageRegdn;
+
+        return $this;
+    }
+
+    public function getIvaPourcentageRepos(): ?int
+    {
+        return $this->ivaPourcentageRepos;
+    }
+
+    public function setIvaPourcentageRepos(?int $ivaPourcentageRepos): self
+    {
+        $this->ivaPourcentageRepos = $ivaPourcentageRepos;
+
+        return $this;
+    }
+
+    public function getIvaDebitRegdn(): ?string
+    {
+        return $this->ivaDebitRegdn;
+    }
+
+    public function setIvaDebitRegdn(string $ivaDebitRegdn): self
+    {
+        $this->ivaDebitRegdn = $ivaDebitRegdn;
+
+        return $this;
+    }
+
+    public function getIvaDebitRepos(): ?string
+    {
+        return $this->ivaDebitRepos;
+    }
+
+    public function setIvaDebitRepos(?string $ivaDebitRepos): self
+    {
+        $this->ivaDebitRepos = $ivaDebitRepos;
+
+        return $this;
+    }
+
+    public function getIvaReserve(): ?string
+    {
+        return $this->ivaReserve;
+    }
+
+    public function setIvaReserve(?string $ivaReserve): self
+    {
+        $this->ivaReserve = $ivaReserve;
+
+        return $this;
+    }
+
+    public function getCxPourcentageRegdn(): ?int
+    {
+        return $this->cxPourcentageRegdn;
+    }
+
+    public function setCxPourcentageRegdn(?int $cxPourcentageRegdn): self
+    {
+        $this->cxPourcentageRegdn = $cxPourcentageRegdn;
+
+        return $this;
+    }
+
+    public function getCxPourcentageRepos(): ?int
+    {
+        return $this->cxPourcentageRepos;
+    }
+
+    public function setCxPourcentageRepos(?int $cxPourcentageRepos): self
+    {
+        $this->cxPourcentageRepos = $cxPourcentageRepos;
+
+        return $this;
+    }
+
+    public function getCxDebitRegdn(): ?string
+    {
+        return $this->cxDebitRegdn;
+    }
+
+    public function setCxDebitRegdn(?string $cxDebitRegdn): self
+    {
+        $this->cxDebitRegdn = $cxDebitRegdn;
+
+        return $this;
+    }
+
+    public function getCxDebitRepos(): ?string
+    {
+        return $this->cxDebitRepos;
+    }
+
+    public function setCxDebitRepos(string $cxDebitRepos): self
+    {
+        $this->cxDebitRepos = $cxDebitRepos;
+
+        return $this;
+    }
+
+    public function getCxReserve(): ?string
+    {
+        return $this->cxReserve;
+    }
+
+    public function setCxReserve(?string $cxReserve): self
+    {
+        $this->cxReserve = $cxReserve;
+
+        return $this;
+    }
+
+    public function getCdtePourcentageRegdn(): ?int
+    {
+        return $this->cdtePourcentageRegdn;
+    }
+
+    public function setCdtePourcentageRegdn(?int $cdtePourcentageRegdn): self
+    {
+        $this->cdtePourcentageRegdn = $cdtePourcentageRegdn;
+
+        return $this;
+    }
+
+    public function getCdtePourcentageRepos(): ?int
+    {
+        return $this->cdtePourcentageRepos;
+    }
+
+    public function setCdtePourcentageRepos(?int $cdtePourcentageRepos): self
+    {
+        $this->cdtePourcentageRepos = $cdtePourcentageRepos;
+
+        return $this;
+    }
+
+    public function getCdteDebitRegdn(): ?string
+    {
+        return $this->cdteDebitRegdn;
+    }
+
+    public function setCdteDebitRegdn(?string $cdteDebitRegdn): self
+    {
+        $this->cdteDebitRegdn = $cdteDebitRegdn;
+
+        return $this;
+    }
+
+    public function getCdteDebitRepos(): ?string
+    {
+        return $this->cdteDebitRepos;
+    }
+
+    public function setCdteDebitRepos(?string $cdteDebitRepos): self
+    {
+        $this->cdteDebitRepos = $cdteDebitRepos;
+
+        return $this;
+    }
+
+    public function getCdteReserve(): ?string
+    {
+        return $this->cdteReserve;
+    }
+
+    public function setCdteReserve(?string $cdteReserve): self
+    {
+        $this->cdteReserve = $cdteReserve;
+
+        return $this;
+    }
+
+    public function getTotalPourcentageRegdn(): ?int
+    {
+        return $this->totalPourcentageRegdn;
+    }
+
+    public function setTotalPourcentageRegdn(?int $totalPourcentageRegdn): self
+    {
+        $this->totalPourcentageRegdn = $totalPourcentageRegdn;
+
+        return $this;
+    }
+
+    public function getTotalPourcentageRepos(): ?int
+    {
+        return $this->totalPourcentageRepos;
+    }
+
+    public function setTotalPourcentageRepos(?int $totalPourcentageRepos): self
+    {
+        $this->totalPourcentageRepos = $totalPourcentageRepos;
+
+        return $this;
+    }
+
+    public function getTotalDebitRegdn(): ?string
+    {
+        return $this->totalDebitRegdn;
+    }
+
+    public function setTotalDebitRegdn(?string $totalDebitRegdn): self
+    {
+        $this->totalDebitRegdn = $totalDebitRegdn;
+
+        return $this;
+    }
+
+    public function getTotalDebitRepos(): ?string
+    {
+        return $this->totalDebitRepos;
+    }
+
+    public function setTotalDebitRepos(?string $totalDebitRepos): self
+    {
+        $this->totalDebitRepos = $totalDebitRepos;
+
+        return $this;
+    }
+
+    public function getTotalReserve(): ?string
+    {
+        return $this->totalReserve;
+    }
+
+    public function setTotalReserve(?string $totalReserve): self
+    {
+        $this->totalReserve = $totalReserve;
 
         return $this;
     }

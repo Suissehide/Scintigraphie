@@ -137,6 +137,203 @@ class SuiviType extends AbstractType
             ->add('debitRegadenosonSegment', BullseyeType::class, array())
             ->add('analyseReposSegment', BullseyeType::class, array())
             ->add('analyseRegadenosonSegment', BullseyeType::class, array())
+
+            // 
+            ->add('ivaPourcentageRegdn', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaPourcentageRepos', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaDebitRegdn', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaDebitRepos', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('ivaReserve', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+
+            ->add('cxPourcentageRegdn', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('cxPourcentageRepos', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('cxDebitRegdn', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('cxDebitRepos', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('cxReserve', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+
+            ->add('cdtePourcentageRegdn', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('cdtePourcentageRepos', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('cdteDebitRegdn', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('cdteDebitRepos', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('cdteReserve', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+
+            ->add('totalPourcentageRegdn', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('totalPourcentageRepos', IntegerType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                ),
+                'required' => false,
+            ))
+            ->add('totalDebitRegdn', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('totalDebitRepos', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
+            ->add('totalReserve', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => '',
+                    'data-min' => '',
+                    'data-max' => '',
+                    'step' => '0.01',
+                ),
+                'required' => false,
+            ))
         ;
     }
 

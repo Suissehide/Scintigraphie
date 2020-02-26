@@ -110,13 +110,21 @@ td .btn-default {
     flex: 1;
 }
 
-.table-5 {
+.table-5, .table-6 {
     display: flex;
     padding: 0 10px 0 15px;
 }
 
-.table-5>div {
+.table-5 > div {
     flex: 20%;
+}
+
+.table-6 > div {
+    flex: 17%;
+}
+
+.table-6 > .lg {
+    flex: 34%;
 }
 
 /* ========= PAGINATION ========= */
@@ -312,8 +320,17 @@ label, .col-label, .row-label {
 .row-label {
     text-align: center;
     padding-bottom: 5px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 0px;
     border-bottom: 1px solid #3CBCC3;
+}
+
+.row-margin-bottom {
+    margin-bottom: 10px;
+}
+
+.row-border {
+    border-right: 1px solid #3CBCC3;
 }
 
 .badge-danger {

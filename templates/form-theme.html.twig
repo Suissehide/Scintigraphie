@@ -60,10 +60,13 @@
 {% endblock form_row %}
 
 {% block integer_widget %}
-    {% set type = type|default('integer') %}
+    {%- set type = type|default('number') -%}
     {% if not useStyle|default(false) %}
         {{ block('form_widget_simple') }}
     {% else %}
+        {%- if type == 'range' or type == 'color' -%}
+            {%- set required = false -%}
+        {%- endif -%}
         <div class="form-unity">
             <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %} value="{{ value }}" {% endif %}/>
             <span class="focus-input"></span>

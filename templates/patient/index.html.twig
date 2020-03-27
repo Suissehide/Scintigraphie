@@ -503,7 +503,7 @@
                     <div class="col-md-6">
                         <div class="wrap-input">
                             {{ form_widget(form.paraclinique.debitRegadenosonGlobal, {
-                                    'attr': {'class': 'input js-unity', 'step' : 'any'},
+                                    'attr': {'class': 'input js-unity'},
                                     'useStyle': true,
                                 })
                             }}
@@ -542,9 +542,9 @@
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
                                         'useStyle': false,
-                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
+                                {# 'value' : var|number_format(0, '.', ','), #}
                             </div>
                         </div>
                     {% endfor %}
@@ -575,9 +575,9 @@
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
                                         'useStyle': false,
-                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
+                                {# 'value' : var|number_format(0, '.', ','), #}
                             </div>
                         </div>
                     {% endfor %}
@@ -1115,9 +1115,9 @@
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
                                         'useStyle': false,
-                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
+                                {# 'value' : var|number_format(0, '.', ','), #}
                             </div>
                         </div>
                     {% endfor %}
@@ -1148,9 +1148,9 @@
                                 {{ form_widget(segment.seg, {
                                         'attr': {'class': 'input js-unity', 'placeholder': counter},
                                         'useStyle': false,
-                                        'value' : var|number_format(0, '.', ','),
                                     })
                                 }}
+                                {# 'value' : var|number_format(0, '.', ','), #}
                             </div>
                         </div>
                     {% endfor %}

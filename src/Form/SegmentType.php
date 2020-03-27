@@ -19,6 +19,7 @@ class SegmentType extends AbstractType
                     'unity' => '%',
                     'data-min' => '',
                     'data-max' => '',
+                    'step' => '0.01',
                 ),
                 'required' => false,
             ))

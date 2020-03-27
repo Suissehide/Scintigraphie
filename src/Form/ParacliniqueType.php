@@ -215,6 +215,27 @@ class ParacliniqueType extends AbstractType
                 ),
                 'required' => false,
             ))
+
+            ->add('debitReposGlobal', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => 'volt',
+                    'data-min' => '3',
+                    'data-max' => '50',
+                    'step' => '0.1',
+                ),
+                'required' => false,
+            ))
+            ->add('debitRegadenosonGlobal', NumberType::class, array(
+                'label' => '',
+                'attr' => array(
+                    'unity' => 'volt',
+                    'data-min' => '3',
+                    'data-max' => '50',
+                    'step' => '0.1',
+                ),
+                'required' => false,
+            ))
             ->add('fractionRepos', NumberType::class, array(
                 'label' => 'Fraction d’éjection au repos',
                 'attr' => array(
@@ -231,26 +252,6 @@ class ParacliniqueType extends AbstractType
                     'unity' => '%',
                     'data-min' => '5',
                     'data-max' => '75',
-                    'step' => '0.1',
-                ),
-                'required' => false,
-            ))
-            ->add('debitReposGlobal', NumberType::class, array(
-                'label' => 'Neuroesthésiométrie (valeur la plus haute)',
-                'attr' => array(
-                    'unity' => 'volt',
-                    'data-min' => '3',
-                    'data-max' => '50',
-                    'step' => '0.1',
-                ),
-                'required' => false,
-            ))
-            ->add('debitRegadenosonGlobal', NumberType::class, array(
-                'label' => 'Neuroesthésiométrie (valeur la plus haute)',
-                'attr' => array(
-                    'unity' => 'volt',
-                    'data-min' => '3',
-                    'data-max' => '50',
                     'step' => '0.1',
                 ),
                 'required' => false,
